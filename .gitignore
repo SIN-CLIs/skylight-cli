@@ -1,0 +1,21 @@
+.DS_Store
+.build/
+.swiftpm/
+Packages/
+*.xcodeproj
+*.xcworkspace
+xcuserdata/
+
+# Build artefacts
+/build/
+/release/
+
+# Outputs
+*.png
+!docs/*.png
+*.log
+trajectories/
+
+# Environment
+.env
+.env.*
