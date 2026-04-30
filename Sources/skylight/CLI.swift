@@ -3,7 +3,7 @@ import Foundation
 import AppKit
 #endif
 
-let SKYLIGHT_VERSION = "0.1.0"
+let SKYLIGHT_VERSION = "0.2.0"
 
 enum CLI {
 

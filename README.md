@@ -4,6 +4,10 @@ Stateless macOS CLI that captures windows, dumps interactive elements (Set-of-Ma
 and posts mouse events into a target process **without stealing the system cursor**,
 using the private `CGEventPostToPid` symbol exported by `SkyLight.framework`.
 
+**Current Version:** 0.2.0  
+**Minimum macOS:** 12.0+  
+**Status:** Production-ready (v0.2.0 with enhanced debugging & error handling)
+
 Part of the SIN-CLIs stealth triad:
 
 ```
@@ -26,6 +30,15 @@ a non-zero code on failure. There is no daemon, no MCP server, no shared state.
 swift build -c release
 cp .build/release/skylight /usr/local/bin/skylight-cli
 ```
+
+## v0.2.0 Features
+
+- ✅ **Debug Logging** — Set `SKL_DEBUG=1` for diagnostic output
+- ✅ **Enhanced Errors** — Contextual error fields for orchestrator integration
+- ✅ **Safe Type Casting** — Eliminated force_cast warnings
+- ✅ **Improved ArgParser** — Validation helpers for argument groups
+
+See [CHANGELOG.md](docs/CHANGELOG.md) for full release notes.
 
 ## Quick start
 

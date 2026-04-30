@@ -6,12 +6,31 @@ import ImageIO
 import UniformTypeIdentifiers
 #endif
 
+// MARK: - Environment
+
+enum SKLEnvironment {
+    static let isDebug = ProcessInfo.processInfo.environment["SKL_DEBUG"] == "1"
+    
+    static func logDebug(_ message: String) {
+        guard isDebug else { return }
+        FileHandle.standardError.write(Data(("[DEBUG] \(message)\n").utf8))
+    }
+}
+
 // MARK: - Errors
 
 struct CLIError: Error {
     let code: String
     let message: String
     let exitCode: Int32
+    let context: [String: String]?
+
+    init(code: String, message: String, exitCode: Int32 = 1, context: [String: String]? = nil) {
+        self.code = code
+        self.message = message
+        self.exitCode = exitCode
+        self.context = context
+    }
 
     static let missingPID = CLIError(code: "missing_pid", message: "--pid is required", exitCode: 2)
 }
@@ -33,8 +52,22 @@ enum Output {
         let payload: [String: Any] = [
             "status": "error",
             "error": code,
-            "message": message
+            "message": message,
+            "version": SKYLIGHT_VERSION
         ]
+        FileHandle.standardError.write(Data((toJSON(payload) + "\n").utf8))
+    }
+    
+    static func errorWithContext(_ error: CLIError) {
+        var payload: [String: Any] = [
+            "status": "error",
+            "error": error.code,
+            "message": error.message,
+            "version": SKYLIGHT_VERSION
+        ]
+        if let ctx = error.context {
+            payload["context"] = ctx
+        }
         FileHandle.standardError.write(Data((toJSON(payload) + "\n").utf8))
     }
 
@@ -164,6 +197,18 @@ struct ArgParser {
 
     func flag(_ key: String) -> Bool {
         flags.contains(key)
+    }
+    
+    func hasFlag(_ key: String) -> Bool {
+        flags.contains(key)
+    }
+    
+    /// Validates that at least one of the provided keys is present
+    func requireOneOf(_ keys: [String]) -> String? {
+        for key in keys {
+            if string(key) != nil { return key }
+        }
+        return nil
     }
 }
 

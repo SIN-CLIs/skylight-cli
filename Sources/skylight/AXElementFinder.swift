@@ -117,10 +117,11 @@ enum AXElementFinder {
         guard let posVal = posRef, CFGetTypeID(posVal) == AXValueGetTypeID() else { return nil }
         guard let sizeVal = sizeRef, CFGetTypeID(sizeVal) == AXValueGetTypeID() else { return nil }
 
-        // swiftlint:disable:next force_cast
-        AXValueGetValue(posVal as! AXValue, .cgPoint, &point)
-        // swiftlint:disable:next force_cast
-        AXValueGetValue(sizeVal as! AXValue, .cgSize, &size)
+        guard let posValue = posVal as? AXValue else { return nil }
+        guard let sizeValue = sizeVal as? AXValue else { return nil }
+
+        AXValueGetValue(posValue, .cgPoint, &point)
+        AXValueGetValue(sizeValue, .cgSize, &size)
         return CGRect(origin: point, size: size)
     }
 

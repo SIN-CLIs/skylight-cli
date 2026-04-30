@@ -76,6 +76,21 @@ if skylightAvailable {
 4. **Function names are verb-first:** `captureWindow`, `findElement`, `performClick`.
 5. **Error types are enum-based,** not stringly-typed. See `Utils.swift` for patterns.
 6. **JSON construction uses `[String: Any]` dictionaries,** then `JSONSerialization.data(withJSONObject:)`.
+7. **Use safe type casting** – avoid force casts (`as!`). Use `guard let` or `if let` patterns instead.
+8. **Enable debug logging** – use `SKLEnvironment.logDebug()` for non-production diagnostics.
+
+### Debug Logging
+
+Enable with `SKL_DEBUG=1`:
+```bash
+SKL_DEBUG=1 ./.build/release/skylight screenshot --pid $PID 2>&1 | grep DEBUG
+```
+
+The `SKLEnvironment` module provides:
+```swift
+SKLEnvironment.logDebug("AX tree walk starting, max depth: \(maxDepth)")
+// Output: [DEBUG] AX tree walk starting, max depth: 60
+```
 
 ---
 
