@@ -10,6 +10,7 @@ osascript -e 'tell application "VoiceOver" to quit'
 
 ## Screenshot: `skylight-cli screenshot --pid PID --mode som --include-tree`
 ## Klick: `skylight-cli click --pid PID --element-index N`
+## Type: `skylight-cli type --pid PID --element-index N --text "Hallo Welt"`
 ## Primer (MUSS): `skylight-cli click --pid PID --x -1 --y -1`
 ## Hold (Cloudflare): `skylight-cli hold --pid PID --element-index N --duration 3000`
 
