@@ -4,6 +4,10 @@ Stateless macOS CLI that captures windows, dumps interactive elements (Set-of-Ma
 and clicks via `AXUIElementPerformAction` (Accessibility API) —
 **`CGEventPostToPid` does NOT work on Chrome 148/macOS 26.**
 
+**Prerequisite:** Chrome needs accessibility enabled. Start VoiceOver once briefly,
+then stop it — the AX tree persists. No `--force-renderer-accessibility` flag needed.
+See [stealth-runner AGENTS.md](https://github.com/OpenSIN-AI/stealth-runner/blob/main/AGENTS.md) for details.
+
 **Current Version:** 0.2.1 (AXPress)
 **Minimum macOS:** 12.0+  
 **Status:** Production-ready (v0.2.0 with enhanced debugging & error handling)
