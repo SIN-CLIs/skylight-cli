@@ -1,47 +1,92 @@
-# brain.md — skylight-cli
+# brain.md — stealth-runner (SOTA Stealth Triade Orchestrator)
 
-## skylight-cli
-Stateless macOS CLI for stealth browser automation.
-Part of the SIN-CLIs stealth triad:
+## Architektur: Reine Stealth-Triade — v2.0
+
 ```
-unmask-cli (sense) → playstealth-cli (think) → skylight-cli (act)
+playstealth-cli (launch) → skylight-cli (screenshot+click) → Llama 4 Scout (vision) → unmask-cli (verify)
 ```
 
-## Core Features
-- Screenshot with Set-of-Marks (SoM) overlay
-- Click by element-index or label (no cursor stealing via CGEventPostToPid)
-- Window state inspection (AX tree, URL, geometry)
-- Primer click for Chromium user-activation gate
-- JSON stdout contract with exit codes 0-5
+## Verboten — ZERO Toleranz (seit efd363f):
+- `cua-driver` — ALT, vollständig durch skylight-cli v0.2.0 ersetzt
+- `open -na "Google Chrome"` — FALSCH, nur playstealth-cli launch
+- `AXStaticText` klicken — WIRKUNGSLOS, nur AXButton/AXLink/AXCheckBox/AXRadioButton
+- Klick ohne Vision — RATEN, muss via Llama 4 Scout
+- `.env` im Repo — SICHERHEITSRISIKO, nur `.env.example`
 
-## Integration
-- Used by stealth-runner via StealthExecutor
-- Replaces CDP-based bridge in A2A-SIN-Worker-heypiggy
-- See GitHub Epic #41 for v1.0 roadmap
+## StealthExecutor (runner/stealth_executor.py)
+- Reine skylight-cli Bindung, FATAL RuntimeError wenn nicht installiert
+- `backend` property → immer "skylight-cli"
+- `screenshot(mode="som"|"grid"|"ocr")` — Targeted Window Capture
+- `click(element_index=N)` — CGEventPostToPid via SkyLight.framework
+- `launch_browser(url)` — playstealth-cli launch → PID
+- `verify_stealth()` — unmask-cli verify-stealth
 
-## Version: 0.2.0
-## Minimum macOS: 12.0+
-## Language: Swift 5.9+
+## State Machine (runner/state_machine.py)
+10 Zustände:
+```
+IDLE → LAUNCH_BROWSER → WAIT_READY → CAPTURE → VISION → EXECUTE → VERIFY → (loop) → DONE
+                                                                               ↘ RECOVERY
+```
+- `StealthRunner(url)` — entry point
+- `_launch()` — playstealth-cli launch --json → PID
+- `_wait_ready()` — skylight-cli wait-for-selector
+- `_capture()` — skylight-cli screenshot --mode som
+- `_vision()` — VisionClient.get_action() → Llama 4 Scout
+- `_execute()` — click/type/scroll/drag/hold/select-option/keypress/wait/done
+- `_verify()` — unmask-cli verify-stealth
+- `_recover()` — playstealth-cli rotate-profile
 
-## Update: Issue #76 Gaps geschlossen
+## Vision Client (runner/vision_client.py)
+- Cloudflare Llama 4 Scout (PRIMARY) — CF_ACCT + CF_TOKEN
+- NVIDIA Mistral 675B (FALLBACK) — NVIDIA_API_KEY
+- `urllib.request` (kein openai dependency)
 
-### Gap #3 Fixed: AX-Tree-Kollaps (`2ea1ee6`)
-- Private SPI `_AXObserverAddNotificationAndCheckRemote` aus HIServices.framework
-- Verhindert, dass Blink den AX-Tree pausiert wenn Fenster verdeckt ist
-- `enrollAXTreeWakeup(pid:)` in `AXElementFinder.swift`
+## Prompt Kit (runner/prompt_kit.py)
+- **SYSTEM_PROMPT**: 1742 chars, 10 Aktionen
+- click, type, keypress, scroll, drag, hold, select-option, track, wait, done
+- Anti-AXStaticText Regel
+- CAPTCHA Strategien (hold für Turnstile, reCAPTCHA Tiles)
+- Few-Shot Beispiele
 
-### Gap #2 Fixed: OCR-Grounding (`f7b1f31`)
-- Neue Datei: `OCRGrounding.swift` — Apple Vision `VNRecognizeTextRequest`
-- Neuer Mode: `skylight-cli screenshot --mode ocr`
-- Drei-Schicht-Resilienz: SoM → Grid → OCR
-- Revision 3 (SOTA): `VNRecognizeTextRequestRevision3`
+## sin_survey_core (aus A2A-SIN-Worker-heypiggy extrahiert)
+- `panels/detectors.py` — 8 Panel-Provider (PureSpectrum, Dynata, Sapio, Cint, Lucid, HeyPiggy, MarketSight, Bilendi)
+- `rewards/extractor.py` — EUR-Parsing (6 Regex-Patterns)
+- `errors/templates.py` — 4 Fehlerkategorien (disqualified, quota_full, attention_failed, not_found)
 
-## Docs: fix.md + issues.md
-- fix.md: 8 Bugs behoben (Tabelle aller Fixes mit Commits)
-- issues.md: Alle Issues per Repo (Tabelle mit Status)
+## Tests: 18/18 PASS
+- `tests/test_sin_survey_core.py` — 12 tests (panel detection, EUR extraction, error classification)
+- `tests/test_runner.py` — 6 tests (executor, vision parsing, audit log, human profile)
 
-## v0.2.0 Build Status
-- Compiled: `swift build -c release` ✅
-- Installed: `~/.local/bin/skylight-cli`
-- 90+ AX elements found on HeyPiggy.com
-- Web content detection: AXWebArea, AXStaticText, AXButton, AXLink
+## Smoke Test (30.04.2026): ALL GREEN
+- skylight-cli v0.2.0 installed ✅
+- 90 AX elements found on HeyPiggy ✅
+- Click (dry-run): status ok ✅
+- ZERO cua-driver references ✅
+- ZERO open -na references ✅
+
+## Docs (8/8 md files):
+- brain.md ✅ | banned.md ✅ | architecture.md ✅ | goal.md ✅
+- fix.md (9 bugs) ✅ | issues.md (all repos) ✅
+- AGENTS.md ✅ | CONTRIBUTING.md ✅
+
+## Repos:
+- https://github.com/OpenSIN-AI/stealth-runner (GREENFIELD, PURE)
+- https://github.com/OpenSIN-AI/A2A-SIN-Worker-heypiggy (REFERENCE, not deleted)
+- https://github.com/SIN-CLIs/skylight-cli (Stealth Triade: act, v0.2.0)
+
+## Smoke Test Resultate (30.04.2026 — 17:20 UTC)
+
+| Test | Result |
+|------|--------|
+| **skylight-cli** | ✅ v0.2.0 installed |
+| **Bot-Chrome** | ✅ PID=91048 running |
+| **Screenshot** | ✅ 90 elements found (som mode) |
+| **Vision (NVIDIA Mistral)** | ✅ `{"action":"click","element_id":42,"reasoning":"First available survey with reward 2.23 €"}` |
+| **Click (dry-run)** | ✅ status=ok |
+| **State Machine** | ✅ CAPTURE→VISION→EXECUTE→VERIFY cycle |
+| **VisionClient backend** | ✅ urllib.request (KEIN openai) |
+| **NVIDIA_API_KEY** | ✅ gesetzt |
+
+### Nicht verfügbar (geplant):
+- ❌ playstealth-cli (binary) — Bot-Chrome via pgrep Workaround
+- ❌ unmask-cli (binary) — verify_stealth graceful fallback
