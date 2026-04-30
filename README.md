@@ -104,24 +104,18 @@ On failure, JSON goes to **stderr** and the process exits non-zero:
 
 ## Stealth model
 
-- `click` posts events with `CGEventPostToPid` (resolved at runtime from
-  `SkyLight.framework`). The host's physical cursor does not move and the
-  target window does not need to be activated.
-- A primer click at `(window.origin - 1, window.origin - 1)` ticks Chromium's
-  user-activation gate so the real click is treated as trusted. Disable with
-  `--no-primer`.
-- If `CGEventPostToPid` cannot be resolved (older OS or hardened runtime
-  blocks the symbol), the click falls back to `CGEvent.post(tap:.cghidEventTap)`
-  which **does** steal the system cursor. The JSON response always includes
-  enough state for the orchestrator to detect the fallback path.
+- `click` uses `AXUIElementPerformAction(element, kAXPressAction)` — the Accessibility API.
+  Chrome 148 on macOS 26 **ignores** `CGEventPostToPid` completely.
+- A primer click at `(-1, -1)` ticks Chromium's user-activation gate.
+- The host's physical cursor does not move. No CGEvent, no SkyLight.framework needed.
+- Chrome needs accessibility enabled: start VoiceOver once briefly, then stop it.
+  The AX tree persists. No `--force-renderer-accessibility` flag needed.
 
 ## Roadmap
 
-- [ ] `recording start|stop` + `replay-trajectory` (port from cua-driver)
+- [ ] `recording start|stop` + `replay-trajectory`
 - [ ] `--state-dir` for persistent window-state cache
 - [ ] `verify` subcommand that pipes through `unmask-cli`
-- [ ] Notarized signed build with `com.apple.security.cs.allow-unsigned-executable-memory`
-      so the SkyLight dlopen survives Gatekeeper on locked-down installs
 
 ## Repository layout
 
@@ -132,6 +126,7 @@ Sources/skylight/
   WindowCapture.swift   CGWindowListCopyWindowInfo + CGWindowListCreateImage
   AXElementFinder.swift Recursive AX tree walker, returns interactive elements
   SoMOverlay.swift      Renders SoM badges + grid fallback onto CGImage
-  SkyLightClicker.swift dlopen bridge to CGEventPostToPid / SLPSPostEventRecordTo
+  SkyLightClicker.swift AXPress click via AXUIElementPerformAction (was CGEventPostToPid)
+  Hold.swift            Hold command for Cloudflare Turnstile
   Utils.swift           Arg parser, JSON output, error model, PNG writer
 ```
