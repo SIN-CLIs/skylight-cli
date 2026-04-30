@@ -22,3 +22,16 @@ unmask-cli (sense) → playstealth-cli (think) → skylight-cli (act)
 ## Version: 0.2.0
 ## Minimum macOS: 12.0+
 ## Language: Swift 5.9+
+
+## Update: Issue #76 Gaps geschlossen
+
+### Gap #3 Fixed: AX-Tree-Kollaps (`2ea1ee6`)
+- Private SPI `_AXObserverAddNotificationAndCheckRemote` aus HIServices.framework
+- Verhindert, dass Blink den AX-Tree pausiert wenn Fenster verdeckt ist
+- `enrollAXTreeWakeup(pid:)` in `AXElementFinder.swift`
+
+### Gap #2 Fixed: OCR-Grounding (`f7b1f31`)
+- Neue Datei: `OCRGrounding.swift` — Apple Vision `VNRecognizeTextRequest`
+- Neuer Mode: `skylight-cli screenshot --mode ocr`
+- Drei-Schicht-Resilienz: SoM → Grid → OCR
+- Revision 3 (SOTA): `VNRecognizeTextRequestRevision3`
