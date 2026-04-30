@@ -13,7 +13,7 @@ enum AXElementFinder {
 
     static let interactingRoles: Set<String> = [
         kAXButtonRole as String,
-        kAXLinkRole as String,
+        "AXLink",
         kAXCheckBoxRole as String,
         kAXRadioButtonRole as String,
         kAXTextFieldRole as String,
@@ -57,7 +57,7 @@ enum AXElementFinder {
 
         let app = AXUIElementCreateApplication(pid)
         var observer: AXObserver?
-        guard AXObserverCreate(pid, { _, _, _ in }, &observer) == .success,
+        guard AXObserverCreate(pid, { _, _, _, _ in }, &observer) == .success,
               let obs = observer else {
             dlclose(handle)
             return
@@ -163,14 +163,12 @@ enum AXElementFinder {
 
         var point = CGPoint.zero
         var size = CGSize.zero
-        guard let posVal = posRef, CFGetTypeID(posVal) == AXValueGetTypeID() else { return nil }
-        guard let sizeVal = sizeRef, CFGetTypeID(sizeVal) == AXValueGetTypeID() else { return nil }
+        guard let posVal = posRef, CFGetTypeID(posVal) == AXValueGetTypeID(),
+              let sizeVal = sizeRef, CFGetTypeID(sizeVal) == AXValueGetTypeID()
+        else { return nil }
 
-        guard let posValue = posVal as? AXValue else { return nil }
-        guard let sizeValue = sizeVal as? AXValue else { return nil }
-
-        AXValueGetValue(posValue, .cgPoint, &point)
-        AXValueGetValue(sizeValue, .cgSize, &size)
+        AXValueGetValue(posVal as! AXValue, .cgPoint, &point)
+        AXValueGetValue(sizeVal as! AXValue, .cgSize, &size)
         return CGRect(origin: point, size: size)
     }
 

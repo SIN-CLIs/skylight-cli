@@ -25,7 +25,6 @@ enum OCRGrounding {
                 let width = CGFloat(image.width)
                 let height = CGFloat(image.height)
 
-                // VN boundingBox ist normalisiert (0..1), Ursprung unten-links
                 let normalizedBox = obs.boundingBox
                 let x = normalizedBox.origin.x * width
                 let y = (1.0 - normalizedBox.origin.y - normalizedBox.size.height) * height
@@ -36,7 +35,9 @@ enum OCRGrounding {
         }
         request.recognitionLevel = .accurate
         request.usesLanguageCorrection = false
-        request.revision = VNRecognizeTextRequestRevision3
+        if #available(macOS 13.0, *) {
+            request.revision = VNRecognizeTextRequestRevision3
+        }
 
         let handler = VNImageRequestHandler(cgImage: image, options: [:])
         try? handler.perform([request])

@@ -35,3 +35,7 @@ unmask-cli (sense) → playstealth-cli (think) → skylight-cli (act)
 - Neuer Mode: `skylight-cli screenshot --mode ocr`
 - Drei-Schicht-Resilienz: SoM → Grid → OCR
 - Revision 3 (SOTA): `VNRecognizeTextRequestRevision3`
+
+## Docs: fix.md + issues.md
+- fix.md: 8 Bugs behoben (Tabelle aller Fixes mit Commits)
+- issues.md: Alle Issues per Repo (Tabelle mit Status)
