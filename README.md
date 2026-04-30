@@ -8,7 +8,7 @@ and clicks via `AXUIElementPerformAction` (Accessibility API) —
 then stop it — the AX tree persists. No `--force-renderer-accessibility` flag needed.
 See [stealth-runner AGENTS.md](https://github.com/OpenSIN-AI/stealth-runner/blob/main/AGENTS.md) for details.
 
-**Current Version:** 0.2.1 (AXPress)
+**Current Version:** 0.2.0 (AXPress)
 **Minimum macOS:** 12.0+  
 **Status:** Production-ready (v0.2.0 with enhanced debugging & error handling)
 

@@ -1,4 +1,4 @@
-# brain.md — skylight-cli v0.2.1
+# brain.md — skylight-cli v0.2.0
 
 > **macOS CLI für Screenshots + Klicks via Accessibility API (AXPress)**
 
