@@ -1,0 +1,28 @@
+name: Release Binary
+on:
+  push:
+    tags: ["v*"]
+jobs:
+  build:
+    strategy:
+      matrix:
+        include:
+          - target: arm64
+            runner: macos-14
+            arch: arm64
+          - target: x86_64
+            runner: macos-13
+            arch: x86_64
+    runs-on: ${{ matrix.runner }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build
+        run: swift build -c release --arch ${{ matrix.arch }}
+      - name: Package
+        run: |
+          cd .build/release
+          tar -czf skylight-${{ github.ref_name }}-${{ matrix.arch }}.tar.gz skylight
+      - name: Upload
+        uses: softprops/action-gh-release@v2
+        with:
+          files: .build/release/skylight-${{ github.ref_name }}-${{ matrix.arch }}.tar.gz
