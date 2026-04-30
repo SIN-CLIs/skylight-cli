@@ -14,6 +14,11 @@ enum SkyLightClicker {
         return err == .success
     }
 
+    static func typeText(element: AXUIElement, text: String) -> Bool {
+        let err = AXUIElementSetAttributeValue(element, kAXValueAttribute as CFString, text as CFTypeRef)
+        return err == .success
+    }
+
     static func click(at point: CGPoint, targetPID: pid_t, button: String = "left") -> ClickResult {
         let cgButton: CGMouseButton
         let downType: CGEventType

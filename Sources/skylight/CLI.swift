@@ -276,4 +276,33 @@ enum CLI {
         let duration = opts.int("--duration") ?? 3000
         try Hold.run(pid: pid, elementIndex: idx, durationMs: duration)
     }
+
+    static func type(_ args: [String]) throws {
+        let opts = ArgParser(args)
+        guard let pid = opts.pid("--pid") else { throw CLIError.missingPID }
+        guard let idx = opts.int("--element-index") else {
+            throw CLIError(code: "bad_args", message: "--element-index required", exitCode: 2)
+        }
+        guard let text = opts.string("--text") ?? opts.string("--value") else {
+            throw CLIError(code: "bad_args", message: "--text required", exitCode: 2)
+        }
+        let capture = try WindowCapture.capture(pid: pid)
+        let elements = AXElementFinder.interactiveElements(pid: pid, windowFrame: capture.frame)
+        guard idx >= 0 && idx < elements.count else {
+            throw CLIError(code: "element_not_found",
+                           message: "Element index \(idx) out of range (have \(elements.count))",
+                           exitCode: 3)
+        }
+        let el = elements[idx]
+        let typed = SkyLightClicker.typeText(element: el.axElement, text: text)
+        Output.json([
+            "status": typed ? "ok" : "error",
+            "command": "type",
+            "pid": pid,
+            "element_index": idx,
+            "element": ["role": el.role, "label": el.label, "path": el.path],
+            "text": text,
+            "typed": typed
+        ])
+    }
 }
