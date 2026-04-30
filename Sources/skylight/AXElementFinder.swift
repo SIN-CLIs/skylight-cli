@@ -28,12 +28,61 @@ enum AXElementFinder {
         "AXStaticText"
     ]
 
+    // MARK: - Private SPI: Hält den AX-Tree aktiv, selbst wenn Fenster verdeckt ist
+
+    private static var didEnrollTreeWakeup = false
+
+    private static func enrollAXTreeWakeup(pid: pid_t) {
+        guard !didEnrollTreeWakeup else { return }
+        didEnrollTreeWakeup = true
+
+        // Private SPI: _AXObserverAddNotificationAndCheckRemote
+        // Verhindert, dass Blink den Accessibility-Tree pausiert,
+        // wenn das Fenster von einem anderen überlappt wird.
+        // Wird von Apple's VoiceOver + Diktat genutzt.
+        typealias AXObserverAddNotificationFn = @convention(c) (
+            AXObserver, AXUIElement, CFString, UnsafeMutableRawPointer?
+        ) -> AXError
+
+        guard let handle = dlopen(
+            "/System/Library/PrivateFrameworks/HIServices.framework/HIServices",
+            RTLD_LAZY | RTLD_LOCAL
+        ) else { return }
+
+        guard let sym = dlsym(handle, "_AXObserverAddNotificationAndCheckRemote") else {
+            dlclose(handle)
+            return
+        }
+        let fn = unsafeBitCast(sym, to: AXObserverAddNotificationFn.self)
+
+        let app = AXUIElementCreateApplication(pid)
+        var observer: AXObserver?
+        guard AXObserverCreate(pid, { _, _, _ in }, &observer) == .success,
+              let obs = observer else {
+            dlclose(handle)
+            return
+        }
+
+        // Registriere für FocusedWindowChanged — das hält Blink's AX-Tree wach
+        let focusedNotification = kAXFocusedWindowChangedNotification as CFString
+        _ = fn(obs, app, focusedNotification, nil)
+        CFRunLoopAddSource(
+            CFRunLoopGetCurrent(),
+            AXObserverGetRunLoopSource(obs),
+            .defaultMode
+        )
+
+        // dlclose lassen wir absichtlich offen — der Observer muss leben
+    }
+
     /// Liefert alle interaktiven Elemente eines Prozesses, sortiert nach
     /// Bildschirmposition (oben → unten, dann links → rechts).
     /// `windowFrame` wird genutzt, um Elemente außerhalb des Fensters
     /// zu verwerfen (z.B. versteckte Menüs).
     static func interactiveElements(pid: pid_t, windowFrame: CGRect? = nil) -> [AXElement] {
         guard isAXTrusted() else { return [] }
+
+        enrollAXTreeWakeup(pid: pid)
 
         let app = AXUIElementCreateApplication(pid)
         var windowsRef: CFTypeRef?
