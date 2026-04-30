@@ -26,25 +26,23 @@
 
 ## Fallback Principle
 
-If SkyLight private framework is not available (`dlopen` fails):
+Click strategy (AXPress primary, CGEvent fallback):
 
-1. **First fallback:** `AXUIElementPerformAction(kAXPressAction)` – uses Accessibility API, no visible cursor movement.
-2. **Second fallback:** `CGEvent.post` – moves visible cursor; only use when AX is unavailable.
-3. **Always log the fallback** in JSON output:
-   - `"fallback":"AXPress"` – used Accessibility API
-   - `"fallback":"CGEvent"` – used global event (visible cursor movement)
+1. **Primary:** `AXUIElementPerformAction(kAXPressAction)` — Accessibility API, invisible.
+2. **Fallback:** `CGEvent.post(tap: .cghidEventTap)` — visible cursor, logged as fallback.
+3. **Always log the method** in JSON output:
+   - `"method":"axpress"` — used Accessibility API
+   - `"method":"cgevent"` — used global event (visible cursor)
 
 Example from `SkyLightClicker.swift`:
 
 ```swift
-if skylightAvailable {
-    // Use SkyLight CGEventPostToPid (invisible)
-} else if axElement.performAction(kAXPressAction) {
-    json["fallback"] = "AXPress"
+if axPress(element: el.axElement) {
+    // AXPress succeeded (invisible, preferred)
 } else {
-    // Last resort: global CGEvent (visible cursor)
-    CGEvent(mouseEvent: ...).post(tap: .cghidEventTap)
-    json["fallback"] = "CGEvent"
+    // Fallback: global CGEvent (visible cursor)
+    CGEvent(mouseEventSource: nil, mouseType: .leftMouseDown, ...).post(tap: .cghidEventTap)
+}
 }
 ```
 
