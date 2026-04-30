@@ -83,6 +83,7 @@ enum CLI {
         let dryRun = opts.flag("--dry-run")
         let usePrimer = !opts.flag("--no-primer")
         let button = opts.string("--button") ?? "left"
+        let forceFallback = opts.flag("--force-fallback")
 
         // Drei Wege ein Ziel zu wählen: index | x,y | role+label
         var target: CGPoint?
@@ -132,9 +133,9 @@ enum CLI {
                 let capture = try? WindowCapture.capture(pid: pid)
                 let primer = capture.map { CGPoint(x: $0.frame.origin.x - 1, y: $0.frame.origin.y - 1) }
                             ?? CGPoint(x: 0, y: 0)
-                _ = SkyLightClicker.click(at: primer, targetPID: pid, button: button)
+                _ = SkyLightClicker.click(at: primer, targetPID: pid, button: button, forceFallback: forceFallback)
             }
-            let result = SkyLightClicker.click(at: point, targetPID: pid, button: button)
+            let result = SkyLightClicker.click(at: point, targetPID: pid, button: button, forceFallback: forceFallback)
             if !result.posted {
                 throw CLIError(code: "click_failed",
                                message: "SkyLight rejected event (loaded=\(result.skylightLoaded))",

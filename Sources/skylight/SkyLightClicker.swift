@@ -49,7 +49,7 @@ struct ClickResult {
 
 enum SkyLightClicker {
 
-    static func click(at point: CGPoint, targetPID: pid_t, button: String = "left") -> ClickResult {
+    static func click(at point: CGPoint, targetPID: pid_t, button: String = "left", forceFallback: Bool = false) -> ClickResult {
         let cgButton: CGMouseButton
         let downType: CGEventType
         let upType: CGEventType
@@ -72,7 +72,7 @@ enum SkyLightClicker {
             return ClickResult(posted: false, skylightLoaded: SkyLight.handle != nil, usedFallback: false)
         }
 
-        if let post = SkyLight.postToPid {
+        if !forceFallback, let post = SkyLight.postToPid {
             post(targetPID, move)
             post(targetPID, down)
             post(targetPID, up)
