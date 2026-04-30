@@ -9,7 +9,7 @@ unmask-cli (sense) → playstealth-cli (think) → skylight-cli (act)
 
 ## Core Features
 - Screenshot with Set-of-Marks (SoM) overlay
-- Click by element-index or label (no cursor stealing via CGEventPostToPid)
+- Click by element-index or label (via AXPress, CGEventPostToPid broken on Chrome 148)
 - Window state inspection (AX tree, URL, geometry)
 - Primer click for Chromium user-activation gate
 - JSON stdout contract with exit codes 0-5

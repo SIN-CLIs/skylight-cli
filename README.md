@@ -1,10 +1,10 @@
 # skylight-cli
 
 Stateless macOS CLI that captures windows, dumps interactive elements (Set-of-Marks)
-and posts mouse events into a target process **without stealing the system cursor**,
-using the private `CGEventPostToPid` symbol exported by `SkyLight.framework`.
+and clicks via `AXUIElementPerformAction` (Accessibility API) —
+**`CGEventPostToPid` does NOT work on Chrome 148/macOS 26.**
 
-**Current Version:** 0.2.0  
+**Current Version:** 0.2.1 (AXPress)
 **Minimum macOS:** 12.0+  
 **Status:** Production-ready (v0.2.0 with enhanced debugging & error handling)
 
