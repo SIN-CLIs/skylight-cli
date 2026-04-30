@@ -63,6 +63,7 @@ enum CLI {
                     "index": idx,
                     "role": el.role,
                     "label": el.label,
+                    "path": el.path,
                     "frame": [
                         "x": el.frame.origin.x,
                         "y": el.frame.origin.y,
@@ -83,7 +84,6 @@ enum CLI {
         let dryRun = opts.flag("--dry-run")
         let usePrimer = !opts.flag("--no-primer")
         let button = opts.string("--button") ?? "left"
-        let forceFallback = opts.flag("--force-fallback")
 
         // Drei Wege ein Ziel zu wählen: index | x,y | role+label
         var target: CGPoint?
@@ -127,19 +127,26 @@ enum CLI {
 
         if !dryRun {
             if usePrimer {
-                // Primer-Klick außerhalb des sichtbaren Bereichs, um Chromiums User-Activation
-                // Gate anzutickern. Wir nutzen den Fenster-Ursprung minus 1px, NICHT (-1,-1)
-                // global (das schlägt auf manchen Builds fehl).
                 let capture = try? WindowCapture.capture(pid: pid)
                 let primer = capture.map { CGPoint(x: $0.frame.origin.x - 1, y: $0.frame.origin.y - 1) }
                             ?? CGPoint(x: 0, y: 0)
-                _ = SkyLightClicker.click(at: primer, targetPID: pid, button: button, forceFallback: forceFallback)
+                _ = SkyLightClicker.click(at: primer, targetPID: pid, button: button)
             }
-            let result = SkyLightClicker.click(at: point, targetPID: pid, button: button, forceFallback: forceFallback)
-            if !result.posted {
-                throw CLIError(code: "click_failed",
-                               message: "SkyLight rejected event (loaded=\(result.skylightLoaded))",
-                               exitCode: 4)
+
+            let usedAXPress: Bool
+            if let el = resolvedElement {
+                usedAXPress = SkyLightClicker.axPress(element: el.axElement)
+            } else {
+                usedAXPress = false
+            }
+
+            if !usedAXPress {
+                let result = SkyLightClicker.click(at: point, targetPID: pid, button: button)
+                if !result.posted {
+                    throw CLIError(code: "click_failed",
+                                   message: "CGEvent.post failed",
+                                   exitCode: 4)
+                }
             }
         }
 
@@ -156,7 +163,8 @@ enum CLI {
         if let el = resolvedElement {
             payload["element"] = [
                 "role": el.role,
-                "label": el.label
+                "label": el.label,
+                "path": el.path
             ]
         }
         Output.json(payload)
@@ -248,6 +256,7 @@ enum CLI {
                     "index": idx,
                     "role": el.role,
                     "label": el.label,
+                    "path": el.path,
                     "frame": [
                         "x": el.frame.origin.x,
                         "y": el.frame.origin.y,
@@ -257,5 +266,14 @@ enum CLI {
                 ] as [String: Any]
             }
         ])
+    }
+    static func hold(_ args: [String]) throws {
+        let opts = ArgParser(args)
+        guard let pid = opts.pid("--pid") else { throw CLIError.missingPID }
+        guard let idx = opts.int("--element-index") else {
+            throw CLIError(code: "bad_args", message: "--element-index required", exitCode: 2)
+        }
+        let duration = opts.int("--duration") ?? 3000
+        try Hold.run(pid: pid, elementIndex: idx, durationMs: duration)
     }
 }

@@ -7,6 +7,8 @@ struct AXElement {
     let frame: CGRect      // global screen coordinates (top-left origin)
     let label: String
     let role: String
+    let path: String       // AX parent chain, e.g. "AXWindow/AXWebArea/AXGroup/AXButton"
+    let axElement: AXUIElement  // reference for AXPress actions
 }
 
 enum AXElementFinder {
@@ -111,20 +113,19 @@ enum AXElementFinder {
 
     private static let maxDepth = 60
 
-    private static func collect(from element: AXUIElement, depth: Int, into results: inout [AXElement]) {
+    private static func collect(from element: AXUIElement, depth: Int, into results: inout [AXElement], parentPath: String = "") {
         guard depth < maxDepth else { return }
 
-        if let role = stringAttr(element, kAXRoleAttribute as CFString),
-           interactingRoles.contains(role),
+        let currentRole = stringAttr(element, kAXRoleAttribute as CFString) ?? ""
+        let currentPath = parentPath.isEmpty ? currentRole : "\(parentPath)/\(currentRole)"
+
+        if interactingRoles.contains(currentRole),
            let frame = frame(of: element),
            frame.size.width > 1, frame.size.height > 1
         {
             let label = bestLabel(of: element)
-            // Static text nur dann mitnehmen, wenn er einen sinnvollen Label hat
-            if role == "AXStaticText" && label.trimmingCharacters(in: .whitespaces).isEmpty {
-                // skip
-            } else {
-                results.append(AXElement(frame: frame, label: label, role: role))
+            if currentRole != "AXStaticText" || !label.trimmingCharacters(in: .whitespaces).isEmpty {
+                results.append(AXElement(frame: frame, label: label, role: currentRole, path: currentPath, axElement: element))
             }
         }
 
@@ -133,7 +134,7 @@ enum AXElementFinder {
            let children = childrenRef as? [AXUIElement]
         {
             for child in children {
-                collect(from: child, depth: depth + 1, into: &results)
+                collect(from: child, depth: depth + 1, into: &results, parentPath: currentPath)
             }
         }
     }

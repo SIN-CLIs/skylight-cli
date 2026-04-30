@@ -18,6 +18,8 @@ do {
         try CLI.screenshot(rest)
     case "click":
         try CLI.click(rest)
+    case "hold":
+        try CLI.hold(rest)
     case "wait-for-selector":
         try CLI.waitForSelector(rest)
     case "get-window-state":
