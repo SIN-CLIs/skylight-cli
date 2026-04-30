@@ -1,0 +1,19 @@
+name: CI
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+jobs:
+  test:
+    strategy:
+      matrix:
+        include:
+          - runner: macos-14
+            arch: arm64
+    runs-on: ${{ matrix.runner }}
+    steps:
+      - uses: actions/checkout@v4
+      - run: swift build -c release --arch ${{ matrix.arch }}
+      - run: swift test --arch ${{ matrix.arch }}
+        timeout-minutes: 5
