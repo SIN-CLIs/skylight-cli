@@ -39,3 +39,9 @@ unmask-cli (sense) → playstealth-cli (think) → skylight-cli (act)
 ## Docs: fix.md + issues.md
 - fix.md: 8 Bugs behoben (Tabelle aller Fixes mit Commits)
 - issues.md: Alle Issues per Repo (Tabelle mit Status)
+
+## v0.2.0 Build Status
+- Compiled: `swift build -c release` ✅
+- Installed: `~/.local/bin/skylight-cli`
+- 90+ AX elements found on HeyPiggy.com
+- Web content detection: AXWebArea, AXStaticText, AXButton, AXLink
