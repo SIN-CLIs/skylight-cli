@@ -31,8 +31,10 @@ enum CLI {
             rendered = SoMOverlay.applySoM(to: capture.image, elements: elements, windowOrigin: capture.frame.origin)
         case "grid":
             rendered = SoMOverlay.applyGrid(to: capture.image, step: CGFloat(gridStep))
+        case "ocr":
+            rendered = OCRGrounding.applyOCR(to: capture.image)
         default:
-            throw CLIError(code: "bad_mode", message: "Unknown mode: \(mode). Use raw|som|grid", exitCode: 2)
+            throw CLIError(code: "bad_mode", message: "Unknown mode: \(mode). Use raw|som|grid|ocr", exitCode: 2)
         }
 
         if !dryRun {
