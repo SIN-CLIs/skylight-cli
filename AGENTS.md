@@ -19,3 +19,8 @@ osascript -e 'tell application "VoiceOver" to quit'
 - Chrome-UI klicken
 - AXStaticText klicken
 - CGEventPostToPid (Chrome 148 ignoriert es)
+## 🔗 Stealth-Triade
+- **Orchestrator:** [stealth-runner](https://github.com/OpenSIN-AI/stealth-runner)
+- **HIDE:** [playstealth-cli](https://github.com/SIN-CLIs/playstealth-cli)
+- **SENSE:** [unmask-cli](https://github.com/SIN-CLIs/unmask-cli)
+- **Archiv:** [heypiggy-worker](https://github.com/OpenSIN-AI/A2A-SIN-Worker-heypiggy)
