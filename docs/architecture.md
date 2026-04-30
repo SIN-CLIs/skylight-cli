@@ -1,3 +1,5 @@
+> ⚠️ HISTORICAL — Pre-AXPress era. CGEventPostToPid outdated. Now: AXPress (AXUIElementPerformAction).
+
 # Architecture
 
 > **TL;DR:** `skylight-cli` is a thin Swift binary that does four things: (1) find a window for a given PID, (2) capture it as a CGImage, (3) walk the AX tree to find clickable elements, (4) post mouse events directly to that PID via the private SkyLight framework. Everything else (LLM calls, retry loops, survey logic) lives in the orchestrator.

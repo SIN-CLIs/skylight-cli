@@ -1,3 +1,5 @@
+> ⚠️ HISTORICAL — Pre-AXPress era. CGEventPostToPid outdated. Now: AXPress (AXUIElementPerformAction).
+
 # Handoff — State Of The Repo
 
 > **TL;DR for the incoming agent:** v0.1 scaffold is complete. All five subcommands (`screenshot`, `click`, `wait-for-selector`, `get-window-state`, `list-elements`) are implemented and compile-clean against macOS 12+. SkyLight integration uses `dlopen` with three fallback layers. Nothing has been live-tested on real hardware yet. Your first job is to run the smoke test in Section "First Action" below.

@@ -1,3 +1,5 @@
+> ⚠️ HISTORICAL — Pre-AXPress era. CGEventPostToPid outdated. Now: AXPress (AXUIElementPerformAction).
+
 # Brain — Design Principles & Decision Log
 
 > **TL;DR:** This file records *why* the code is the way it is. If you are about to "improve" something and you don't know why it was done that way, read the matching decision below first. If your improvement still makes sense afterward, do it AND append a new decision entry.

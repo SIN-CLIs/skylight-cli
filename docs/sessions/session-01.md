@@ -1,3 +1,5 @@
+> ⚠️ HISTORICAL — Pre-AXPress era. CGEventPostToPid outdated. Now: AXPress (AXUIElementPerformAction).
+
 # Session 01 — Initial Scaffold
 
 **Date:** 2026-04-30

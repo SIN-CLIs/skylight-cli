@@ -1,3 +1,5 @@
+> ⚠️ HISTORICAL — Pre-AXPress era. CGEventPostToPid outdated. Now: AXPress (AXUIElementPerformAction).
+
 # Changelog
 
 All notable changes to skylight-cli are documented here.
