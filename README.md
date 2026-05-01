@@ -1,5 +1,7 @@
 # skylight-cli
 
+[![Graphify](https://img.shields.io/badge/Graphify-Knowledge%20Graph-2ea44f?logo=gitbook&logoColor=white)](graphify-out/graph.html)
+
 Stateless macOS CLI that captures windows, dumps interactive elements (Set-of-Marks)
 and clicks via `AXUIElementPerformAction` (Accessibility API) —
 **`CGEventPostToPid` does NOT work on Chrome 148/macOS 26.**

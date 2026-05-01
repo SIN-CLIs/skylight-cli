@@ -1,18 +1,17 @@
-# brain.md — skylight-cli v0.2.0 (EXPERIMENTAL)
+# brain.md - Systemwissen (2026-05-01)
 
-> **Status:** AXPress-Click funktioniert. 22 Issues offen. Nicht production-ready.
+## skylight-cli Kern
+- **Tech:** Swift, macOS Accessibility API (AXUIElementPerformAction)
+- **Primer:** `skylight-cli click --pid <PID> --x -1 --y -1` (Chromium user-activation gate)
+- **NUR `--element-index`** – keine Mauskoordinaten!
+- **Output:** Ein JSON-Objekt pro Befehl auf stdout
+- **Fehler:** Exit-Codes 0-5, JSON auf stderr
 
-## Klick-Mechanismus
-AXUIElementPerformAction(element, kAXPressAction) — CGEventPostToPid ist TOT auf Chrome 148/macOS 26.
+## Integration
+- playstealth-cli → Chrome mit PID
+- stealth-runner → orchestriert via LiveOmniMonitor
+- Nemotron Omni → liefert element_index via NIM API
 
-## Voraussetzung: Chrome Accessibility
-VoiceOver 1x kurz starten -> Chrome aktiviert AX-Tree -> VoiceOver stoppen -> Tree bleibt.
-
-## Architektur
-skylight-cli ist der ACT-Layer: playstealth-cli (HIDE) -> skylight-cli (ACT) -> unmask-cli (SENSE)
-
-## Commands (alle funktionsfaehig)
-screenshot, click, hold, list-elements, get-window-state
-
-## NIEMALS
---x/--y Koordinaten raten, CGEventPostToPid (TOT), cua-driver (ersetzt)
+## Graphify
+- 120 nodes, 19 communities
+- `graphify update .` nach Code-Änderungen
