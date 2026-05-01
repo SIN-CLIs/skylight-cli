@@ -7,17 +7,22 @@ let package = Package(
         .macOS(.v12)
     ],
     products: [
-        .executable(name: "skylight", targets: ["skylight"])
+        .executable(name: "skylight", targets: ["skylight"]),
     ],
     targets: [
         .executableTarget(
             name: "skylight",
             path: "Sources/skylight",
             linkerSettings: [
-                // SkyLight wird zur Laufzeit per dlopen geladen, der Pfad muss aber
-                // dem Linker bekannt sein, falls man später statisch verlinken will.
                 .unsafeFlags(["-F/System/Library/PrivateFrameworks"])
             ]
-        )
+        ),
+        .testTarget(
+            name: "SkylightCliTests",
+            dependencies: ["skylight"],
+            path: "Tests/SkylightCliTests"
+        ),
+    ]
+)
     ]
 )
