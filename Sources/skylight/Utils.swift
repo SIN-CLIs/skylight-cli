@@ -33,6 +33,7 @@ struct CLIError: Error {
     }
 
     static let missingPID = CLIError(code: "missing_pid", message: "--pid is required", exitCode: 2)
+    static let elementNotFound = CLIError(code: "element_not_found", message: "Element index out of range", exitCode: 3)
 }
 
 // MARK: - JSON Output

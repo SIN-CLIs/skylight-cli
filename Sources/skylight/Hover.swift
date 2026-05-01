@@ -1,9 +1,13 @@
 import Foundation
 import CoreGraphics
 struct Hover {
-    static func run(pid: pid_t, elementIndex: Int) throws {
+    static func run(args: [String]) throws {
+        let opts = ArgParser(args)
+        guard let pid = opts.pid("--pid"), let eid = opts.int("--element-index") else { throw CLIError.missingPID }
         let elements = AXElementFinder.interactiveElements(pid: pid)
-        guard elementIndex < elements.count else { throw CLIError(code: "not_found", message: "Element \(elementIndex) not found", exitCode: 3) }
-        print("{\"status\":\"ok\",\"action\":\"Hover\",\"element\":\(elementIndex)}")
+        guard eid < elements.count else { throw CLIError.elementNotFound }
+        let point = CGPoint(x: elements[eid].frame.midX, y: elements[eid].frame.midY)
+        CGEvent(mouseEventSource: nil, mouseType: .mouseMoved, mouseCursorPosition: point, mouseButton: .left)!.post(tap: .cghidEventTap)
+        print("{\"status\":\"ok\",\"hovered\":\(eid)}")
     }
 }

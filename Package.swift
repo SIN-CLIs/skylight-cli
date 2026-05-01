@@ -24,5 +24,3 @@ let package = Package(
         ),
     ]
 )
-    ]
-)

@@ -1,9 +1,12 @@
 import Foundation
 import CoreGraphics
 struct Scroll {
-    static func run(pid: pid_t, elementIndex: Int) throws {
-        let elements = AXElementFinder.interactiveElements(pid: pid)
-        guard elementIndex < elements.count else { throw CLIError(code: "not_found", message: "Element \(elementIndex) not found", exitCode: 3) }
-        print("{\"status\":\"ok\",\"action\":\"Scroll\",\"element\":\(elementIndex)}")
+    static func run(args: [String]) throws {
+        let opts = ArgParser(args)
+        guard opts.pid("--pid") != nil else { throw CLIError.missingPID }
+        let deltaY = Int32(opts.int("--delta-y") ?? -300)
+        let deltaX = Int32(opts.int("--delta-x") ?? 0)
+        CGEvent(scrollWheelEvent2Source: nil, units: .pixel, wheelCount: 2, wheel1: deltaY, wheel2: deltaX, wheel3: 0)!.post(tap: .cghidEventTap)
+        print("{\"status\":\"ok\",\"scrolled\":{\"dx\":\(deltaX),\"dy\":\(deltaY)}}")
     }
 }
