@@ -10,7 +10,7 @@ See [stealth-runner AGENTS.md](https://github.com/OpenSIN-AI/stealth-runner/blob
 
 **Current Version:** 0.2.0 (AXPress)
 **Minimum macOS:** 12.0+  
-**Status:** Production-ready (v0.2.0 with enhanced debugging & error handling)
+**Status:** Experimental — AXPress-click works. 25 issues open. Not production-ready.
 
 Part of the SIN-CLIs stealth triad:
 

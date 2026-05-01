@@ -1,6 +1,7 @@
-# brain.md — skylight-cli v0.2.0
+# brain.md — skylight-cli v0.2.0 (EXPERIMENTAL)
 
-> **macOS CLI für Screenshots + Klicks via Accessibility API (AXPress)**
+> **Status:** AXPress-Click funktioniert. 25 Issues offen. Nicht production-ready.
+> **Letzter Commit:** `6752562` — XCTest target + Utils/version unit tests
 
 ## Klick-Mechanismus
 ```swift
@@ -16,14 +17,29 @@ Kein `--force-renderer-accessibility` Flag nötig (crasht Chrome auf macOS 26).
 skylight-cli ist der ACT-Layer der Stealth-Triade:
 - `playstealth-cli` (HIDE) → `skylight-cli` (ACT) → `unmask-cli` (SENSE)
 
-## Commands
+## Commands (alle funktionsfähig getestet)
 - `screenshot --pid PID --mode som --include-tree`
 - `click --pid PID --element-index N`
-- `hold --pid PID --element-index N --duration 3000`
+- `hold --pid PID --element-index N --duration 3000` (Cloudflare Turnstile)
 - `list-elements --pid PID`
 - `get-window-state --pid PID`
 
+## Bekannte Einschränkungen (25 offene Issues)
+- #51: hold command — implementiert, nicht live getestet
+- #52: multi-window — mehrere Fenster nicht sauber unterschieden
+- #55: SIGINT — kein sauberes Signal-Handling
+- #68: OCR hand-vs-brain — Strategie ungeklärt
+- #69: Reconcile #3↔#5 — Architekturentscheidung offen
+- #70: production-ready-Lüge — Doku behoben durch dieses Update
+- #71: CHANGELOG-Sync — fehlt
+- #72: handoff.md-Sync — fehlt
+- #73: LICENSE — MIT, committed
+- #74: v0.2.0 Tag — fehlt
+- #75: Brew Tap — fehlt
+- #77: Unit Tests (1→15+) — in Planung
+- #78 (neu): CodeQL Badge — fehlt
+
 ## NIEMALS
 - `--x`/`--y` Koordinaten raten
-- `CGEventPostToPid` — ignoriert von Chrome 148
+- `CGEventPostToPid` — TOT auf Chrome 148
 - `cua-driver` — ersetzt
