@@ -1,0 +1,4 @@
+disabled_rules: [trailing_whitespace, line_length]
+opt_in_rules: [empty_count, empty_string, closure_spacing]
+included: [Sources]
+excluded: [.build, Tests]
