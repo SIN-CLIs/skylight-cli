@@ -1,49 +1,27 @@
-# issues.md — All Issues (Updated 2026-05-01)
+# issues.md - Offene Issues & Known Bugs
 
-## SOTA Issues
+## MASTER ISSUE - Productization Sprint (10 Tage)
+**Ziel:** Login -> Survey -> Completion -> Balance-Check stabil machen.
 
-| # | Plan | Repo | Priority |
-|---|------|------|----------|
-| #77 | SOTA-004: Unit Tests 1→15+ | skylight-cli | P1-HIGH |
+### Subissues
+- [ ] SR-01: Stabilitaetsbaseline und Erfolgsmetriken definieren
+- [ ] SR-02: Command-Reliability fuer kritische Aktionen haerten
+- [ ] SR-03: End-to-End-Flow schliessen
+- [ ] SR-04: Recovery-Layer mit Retry/Backoff/Snapshots bauen
+- [ ] SR-05: Observability mit Logs, Metriken und Alerts ergaenzen
+- [ ] SR-06: Minimalen Produkt-Shell bauen
+- [ ] SR-07: Queue, Session-Isolation und Skalierung vorbereiten
+- [ ] SR-08: Quality Gates und Smoke-Tests ergaenzen
+- [ ] SR-09: Adoption Pack erstellen
+- [ ] SR-10: Release-Readiness Review durchfuehren
 
-## stealth-runner
-| # | Title | Status |
-|---|-------|--------|
-| #1 | Epic: Stealth Triad Greenfield Build | OPEN (tracker) |
-| #2 | CLI flags usage examples | ✅ CLOSED |
-| #3 | CLI flags section | ✅ CLOSED |
-| #4 | Update CLI help text → skylight-cli | OPEN (P2) |
-| #5 | SoM references in Vision prompts | ✅ IMPLEMENTED |
-| #6 | Merge workflow CONTRIBUTING.md | ✅ CLOSED |
-| #7 | Panel override logic sin_survey_core | ✅ CLOSED |
-| #8 | Error recovery | ✅ IMPLEMENTED |
-| #9 | P0-PRIVACY Targeted Window Capture | ✅ CLOSED |
+### Definition of Done
+- Core-Steps schlagen zuverlaessig an
+- Fehler werden automatisch erkannt und abgefangen
+- Status ist jederzeit sichtbar
+- neue Laeufe starten ohne Codeaenderung
 
-## A2A-SIN-Worker-heypiggy
-| # | Title | Status |
-|---|-------|--------|
-| #167 | Stealth-Triade Epic | OPEN (tracker) |
-| #168-#171 | SOTA-001,002,006,007 | OPEN |
-| 49+ | CDP/DOM obsolete | CLOSED |
-
-## skylight-cli
-| # | Title | Status |
-|---|-------|--------|
-| #41 | Epic v1.0 (35 sub-issues) | OPEN |
-| #76 | Lücken Analysis | OPEN (2/6 closed) |
-| #77 | SOTA-004: Unit Tests 1→15+ | OPEN |
-
-## screen-follow
-| # | Title | Status |
-|---|-------|--------|
-| #5 | SOTA-003: Test Suite 0→20+ | OPEN |
-
-## playstealth-cli
-| # | Title | Status |
-|---|-------|--------|
-| #75 | SOTA-005: PyPI Release v1.0 | OPEN |
-
-## unmask-cli
-| # | Title | Status |
-|---|-------|--------|
-| — | 1 existing issue | OPEN |
+### Plan References
+- stealth-runner/MASTER-PLAN-2026-05-02.md (canonical)
+- stealth-runner/ROADMAP-10-DAY-2026-05-02.md
+- stealth-runner/issues.md
