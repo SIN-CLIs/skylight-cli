@@ -1,5 +1,6 @@
 # skylight-cli
 
+[![CI](https://github.com/SIN-CLIs/skylight-cli/actions/workflows/ci.yml/badge.svg)](https://github.com/SIN-CLIs/skylight-cli/actions/workflows/ci.yml)
 [![Graphify](https://img.shields.io/badge/Graphify-Knowledge%20Graph-2ea44f?logo=gitbook&logoColor=white)](graphify-out/graph.html)
 
 Stateless macOS CLI that captures windows, dumps interactive elements (Set-of-Marks)
