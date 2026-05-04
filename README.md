@@ -143,8 +143,7 @@ Part of the **SIN-CLIs Stealth Suite** — 12 Komponenten für autonome Browser-
 | Layer | Repo | Technologie |
 |-------|------|-------------|
 | 🧠 Orchestrator | [`stealth-runner`](https://github.com/SIN-CLIs/stealth-runner) | Python |
-| 🖱️ ACT Main | [`skylight-cli`](https://github.com/SIN-CLIs/skylight-cli) | Swift |
-| 🖱️ ACT Popup | [`cua-touch`](https://github.com/SIN-CLIs/cua-touch) | Python + Swift |
+| 🖱️ ACT (CUA-ONLY) | [`cua-touch`](https://github.com/SIN-CLIs/cua-touch) | Python + Swift Binary |
 | 🎭 HIDE | [`playstealth-cli`](https://github.com/SIN-CLIs/playstealth-cli) | Python |
 | 👁️ SENSE | [`unmask-cli`](https://github.com/SIN-CLIs/unmask-cli) | TypeScript |
 | 📹 VERIFY | [`screen-follow`](https://github.com/SIN-CLIs/screen-follow) | Swift |
@@ -154,3 +153,29 @@ Part of the **SIN-CLIs Stealth Suite** — 12 Komponenten für autonome Browser-
 | 🐙 GRAPH | [`ax-graph`](https://github.com/SIN-CLIs/ax-graph) *(planned)* | Swift |
 | 💀 LEGACY | [`computer-use-mcp`](https://github.com/SIN-CLIs/computer-use-mcp) | TypeScript |
 | 💀 LEGACY | [`A2A-SIN-Worker-heypiggy`](https://github.com/OpenSIN-AI/A2A-SIN-Worker-heypiggy) | Python |
+
+---
+## 🔗 Stealth Suite
+
+Part of the **SIN-CLIs Stealth Suite** — 16 Komponenten für autonome Browser-Automation:
+
+| Layer | Repo | Technologie |
+|-------|------|-------------|
+| 🧠 Orchestrator | [stealth-runner](https://github.com/SIN-CLIs/stealth-runner) | Python |
+| 🖱️ ACT (CUA-ONLY) | [cua-touch](https://github.com/SIN-CLIs/cua-touch) | Python + Swift |
+| 🎭 HIDE | [playstealth-cli](https://github.com/SIN-CLIs/playstealth-cli) | Python |
+| 👁️ SENSE | [unmask-cli](https://github.com/SIN-CLIs/unmask-cli) | TypeScript |
+| 📹 VERIFY | [screen-follow](https://github.com/SIN-CLIs/screen-follow) | Swift |
+| 🔍 SCAN | [macos-ax-cli](https://github.com/SIN-CLIs/macos-ax-cli) | Swift |
+| 🐙 AX-INDEXER | [ax-graph](https://github.com/SIN-CLIs/ax-graph) | Swift |
+| 🔒 CAPTCHA | [stealth-captcha](https://github.com/SIN-CLIs/stealth-captcha) | Python |
+| 🧩 SKILLS | [stealth-skills](https://github.com/SIN-CLIs/stealth-skills) | TS/Python |
+| 🧱 CORE | [stealth-core](https://github.com/SIN-CLIs/stealth-core) | Python |
+| 🧠 MIND | [stealth-mind](https://github.com/SIN-CLIs/stealth-mind) | Python |
+| 🛡️ GUARDIAN | [stealth-guardian](https://github.com/SIN-CLIs/stealth-guardian) | Python |
+| 🔄 SYNC | [stealth-sync](https://github.com/SIN-CLIs/stealth-sync) | Python |
+| ⚡ SESSION | [stealth-session](https://github.com/SIN-CLIs/stealth-session) | Python |
+| 💀 LEGACY | [skylight-cli](https://github.com/SIN-CLIs/skylight-cli) | Swift |
+| 💀 LEGACY | [computer-use-mcp](https://github.com/SIN-CLIs/computer-use-mcp) | TypeScript |
+
+---
