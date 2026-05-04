@@ -63,7 +63,7 @@
       "source_file": "",
       "source_location": "",
       "id": "xctestcase",
-      "community": 1,
+      "community": 2,
       "norm_label": "xctestcase"
     },
     {
@@ -126,7 +126,7 @@
       "source_file": "Tests/SkylightCliTests/SmokeTests.swift",
       "source_location": "L1",
       "id": "tests_skylightclitests_smoketests_swift",
-      "community": 1,
+      "community": 2,
       "norm_label": "smoketests.swift"
     },
     {
@@ -135,7 +135,7 @@
       "source_file": "Tests/SkylightCliTests/SmokeTests.swift",
       "source_location": "L2",
       "id": "skylightclitests_smoketests_smoketests",
-      "community": 1,
+      "community": 2,
       "norm_label": "smoketests"
     },
     {
@@ -144,7 +144,7 @@
       "source_file": "Tests/SkylightCliTests/SmokeTests.swift",
       "source_location": "L3",
       "id": "skylightclitests_smoketests_smoketests_testversion",
-      "community": 1,
+      "community": 2,
       "norm_label": ".testversion()"
     },
     {
@@ -225,7 +225,7 @@
       "source_file": "Tests/SkylightCliTests/SkylightCliTests.swift",
       "source_location": "L1",
       "id": "tests_skylightclitests_skylightclitests_swift",
-      "community": 1,
+      "community": 2,
       "norm_label": "skylightclitests.swift"
     },
     {
@@ -234,7 +234,7 @@
       "source_file": "Tests/SkylightCliTests/SkylightCliTests.swift",
       "source_location": "L4",
       "id": "skylightclitests_skylightclitests_utilstests",
-      "community": 1,
+      "community": 2,
       "norm_label": "utilstests"
     },
     {
@@ -243,7 +243,7 @@
       "source_file": "Tests/SkylightCliTests/SkylightCliTests.swift",
       "source_location": "L5",
       "id": "skylightclitests_skylightclitests_utilstests_test_environment_debug_default_off",
-      "community": 1,
+      "community": 2,
       "norm_label": ".test_environment_debug_default_off()"
     },
     {
@@ -252,7 +252,7 @@
       "source_file": "Tests/SkylightCliTests/SkylightCliTests.swift",
       "source_location": "L9",
       "id": "skylightclitests_skylightclitests_utilstests_test_missing_pid_error",
-      "community": 1,
+      "community": 2,
       "norm_label": ".test_missing_pid_error()"
     },
     {
@@ -261,7 +261,7 @@
       "source_file": "Tests/SkylightCliTests/SkylightCliTests.swift",
       "source_location": "L17",
       "id": "skylightclitests_skylightclitests_outputtests",
-      "community": 1,
+      "community": 2,
       "norm_label": "outputtests"
     },
     {
@@ -270,7 +270,7 @@
       "source_file": "Tests/SkylightCliTests/SkylightCliTests.swift",
       "source_location": "L18",
       "id": "skylightclitests_skylightclitests_outputtests_test_json_error_output_includes_version",
-      "community": 1,
+      "community": 2,
       "norm_label": ".test_json_error_output_includes_version()"
     },
     {
@@ -279,7 +279,7 @@
       "source_file": "Tests/SkylightCliTests/SkylightCliTests.swift",
       "source_location": "L29",
       "id": "skylightclitests_skylightclitests_outputtests_test_error_content",
-      "community": 1,
+      "community": 2,
       "norm_label": ".test_error_content()"
     },
     {
@@ -288,7 +288,7 @@
       "source_file": "Tests/SkylightCliTests/SkylightCliTests.swift",
       "source_location": "L36",
       "id": "skylightclitests_skylightclitests_outputtests_test_error_with_context",
-      "community": 1,
+      "community": 2,
       "norm_label": ".test_error_with_context()"
     },
     {
@@ -297,7 +297,7 @@
       "source_file": "Tests/SkylightCliTests/SkylightCliTests.swift",
       "source_location": "L44",
       "id": "skylightclitests_skylightclitests_versiontests",
-      "community": 1,
+      "community": 2,
       "norm_label": "versiontests"
     },
     {
@@ -306,7 +306,7 @@
       "source_file": "Tests/SkylightCliTests/SkylightCliTests.swift",
       "source_location": "L45",
       "id": "skylightclitests_skylightclitests_versiontests_test_version_defined",
-      "community": 1,
+      "community": 2,
       "norm_label": ".test_version_defined()"
     },
     {
@@ -385,7 +385,7 @@
       "label": "AXElementFinder",
       "file_type": "code",
       "source_file": "Sources/skylight/AXElementFinder.swift",
-      "source_location": "L14",
+      "source_location": "L16",
       "id": "skylight_axelementfinder_axelementfinder",
       "community": 3,
       "norm_label": "axelementfinder"
@@ -394,7 +394,7 @@
       "label": ".enrollAXTreeWakeup()",
       "file_type": "code",
       "source_file": "Sources/skylight/AXElementFinder.swift",
-      "source_location": "L37",
+      "source_location": "L39",
       "id": "skylight_axelementfinder_axelementfinder_enrollaxtreewakeup",
       "community": 3,
       "norm_label": ".enrollaxtreewakeup()"
@@ -403,7 +403,7 @@
       "label": ".interactiveElements()",
       "file_type": "code",
       "source_file": "Sources/skylight/AXElementFinder.swift",
-      "source_location": "L84",
+      "source_location": "L86",
       "id": "skylight_axelementfinder_axelementfinder_interactiveelements",
       "community": 3,
       "norm_label": ".interactiveelements()"
@@ -412,7 +412,7 @@
       "label": ".collect()",
       "file_type": "code",
       "source_file": "Sources/skylight/AXElementFinder.swift",
-      "source_location": "L116",
+      "source_location": "L118",
       "id": "skylight_axelementfinder_axelementfinder_collect",
       "community": 3,
       "norm_label": ".collect()"
@@ -421,7 +421,7 @@
       "label": ".bestLabel()",
       "file_type": "code",
       "source_file": "Sources/skylight/AXElementFinder.swift",
-      "source_location": "L142",
+      "source_location": "L149",
       "id": "skylight_axelementfinder_axelementfinder_bestlabel",
       "community": 3,
       "norm_label": ".bestlabel()"
@@ -430,16 +430,25 @@
       "label": ".stringAttr()",
       "file_type": "code",
       "source_file": "Sources/skylight/AXElementFinder.swift",
-      "source_location": "L152",
+      "source_location": "L159",
       "id": "skylight_axelementfinder_axelementfinder_stringattr",
       "community": 3,
       "norm_label": ".stringattr()"
     },
     {
+      "label": ".stringArrayAttr()",
+      "file_type": "code",
+      "source_file": "Sources/skylight/AXElementFinder.swift",
+      "source_location": "L165",
+      "id": "skylight_axelementfinder_axelementfinder_stringarrayattr",
+      "community": 3,
+      "norm_label": ".stringarrayattr()"
+    },
+    {
       "label": ".frame()",
       "file_type": "code",
       "source_file": "Sources/skylight/AXElementFinder.swift",
-      "source_location": "L158",
+      "source_location": "L172",
       "id": "skylight_axelementfinder_axelementfinder_frame",
       "community": 3,
       "norm_label": ".frame()"
@@ -448,7 +457,7 @@
       "label": ".isAXTrusted()",
       "file_type": "code",
       "source_file": "Sources/skylight/AXElementFinder.swift",
-      "source_location": "L176",
+      "source_location": "L190",
       "id": "skylight_axelementfinder_axelementfinder_isaxtrusted",
       "community": 3,
       "norm_label": ".isaxtrusted()"
@@ -783,7 +792,7 @@
       "source_file": "Sources/skylight/Utils.swift",
       "source_location": "L1",
       "id": "sources_skylight_utils_swift",
-      "community": 2,
+      "community": 1,
       "norm_label": "utils.swift"
     },
     {
@@ -792,7 +801,7 @@
       "source_file": "Sources/skylight/Utils.swift",
       "source_location": "L11",
       "id": "skylight_utils_sklenvironment",
-      "community": 2,
+      "community": 1,
       "norm_label": "sklenvironment"
     },
     {
@@ -801,7 +810,7 @@
       "source_file": "Sources/skylight/Utils.swift",
       "source_location": "L14",
       "id": "skylight_utils_sklenvironment_logdebug",
-      "community": 2,
+      "community": 1,
       "norm_label": ".logdebug()"
     },
     {
@@ -837,7 +846,7 @@
       "source_file": "Sources/skylight/Utils.swift",
       "source_location": "L41",
       "id": "skylight_utils_output",
-      "community": 2,
+      "community": 1,
       "norm_label": "output"
     },
     {
@@ -846,7 +855,7 @@
       "source_file": "Sources/skylight/Utils.swift",
       "source_location": "L42",
       "id": "skylight_utils_output_json",
-      "community": 2,
+      "community": 1,
       "norm_label": ".json()"
     },
     {
@@ -855,7 +864,7 @@
       "source_file": "Sources/skylight/Utils.swift",
       "source_location": "L52",
       "id": "skylight_utils_output_error",
-      "community": 2,
+      "community": 1,
       "norm_label": ".error()"
     },
     {
@@ -864,7 +873,7 @@
       "source_file": "Sources/skylight/Utils.swift",
       "source_location": "L62",
       "id": "skylight_utils_output_errorwithcontext",
-      "community": 2,
+      "community": 1,
       "norm_label": ".errorwithcontext()"
     },
     {
@@ -873,7 +882,7 @@
       "source_file": "Sources/skylight/Utils.swift",
       "source_location": "L75",
       "id": "skylight_utils_output_usage",
-      "community": 2,
+      "community": 1,
       "norm_label": ".usage()"
     },
     {
@@ -882,7 +891,7 @@
       "source_file": "Sources/skylight/Utils.swift",
       "source_location": "L129",
       "id": "skylight_utils_output_tojson",
-      "community": 2,
+      "community": 1,
       "norm_label": ".tojson()"
     },
     {
@@ -891,7 +900,7 @@
       "source_file": "Sources/skylight/Utils.swift",
       "source_location": "L140",
       "id": "skylight_utils_output_sanitize",
-      "community": 2,
+      "community": 1,
       "norm_label": ".sanitize()"
     },
     {
@@ -918,7 +927,7 @@
       "source_file": "Sources/skylight/Utils.swift",
       "source_location": "L180",
       "id": "skylight_utils_argparser_string",
-      "community": 0,
+      "community": 1,
       "norm_label": ".string()"
     },
     {
@@ -927,7 +936,7 @@
       "source_file": "Sources/skylight/Utils.swift",
       "source_location": "L187",
       "id": "skylight_utils_argparser_int",
-      "community": 3,
+      "community": 1,
       "norm_label": ".int()"
     },
     {
@@ -945,7 +954,7 @@
       "source_file": "Sources/skylight/Utils.swift",
       "source_location": "L195",
       "id": "skylight_utils_argparser_pid",
-      "community": 0,
+      "community": 1,
       "norm_label": ".pid()"
     },
     {
@@ -972,7 +981,7 @@
       "source_file": "Sources/skylight/Utils.swift",
       "source_location": "L208",
       "id": "skylight_utils_argparser_requireoneof",
-      "community": 0,
+      "community": 1,
       "norm_label": ".requireoneof()"
     },
     {
@@ -981,7 +990,7 @@
       "source_file": "Sources/skylight/Utils.swift",
       "source_location": "L219",
       "id": "skylight_utils_pngwriter",
-      "community": 2,
+      "community": 1,
       "norm_label": "pngwriter"
     },
     {
@@ -990,7 +999,7 @@
       "source_file": "Sources/skylight/Utils.swift",
       "source_location": "L220",
       "id": "skylight_utils_pngwriter_write",
-      "community": 2,
+      "community": 1,
       "norm_label": ".write()"
     },
     {
@@ -1060,7 +1069,7 @@
       "label": ".hold()",
       "file_type": "code",
       "source_file": "Sources/skylight/CLI.swift",
-      "source_location": "L270",
+      "source_location": "L275",
       "id": "skylight_cli_cli_hold",
       "community": 0,
       "norm_label": ".hold()"
@@ -1069,7 +1078,7 @@
       "label": ".type()",
       "file_type": "code",
       "source_file": "Sources/skylight/CLI.swift",
-      "source_location": "L280",
+      "source_location": "L285",
       "id": "skylight_cli_cli_type",
       "community": 0,
       "norm_label": ".type()"
@@ -1665,7 +1674,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "Sources/skylight/AXElementFinder.swift",
-      "source_location": "L14",
+      "source_location": "L16",
       "weight": 1.0,
       "_src": "sources_skylight_axelementfinder_swift",
       "_tgt": "skylight_axelementfinder_axelementfinder",
@@ -1677,7 +1686,7 @@
       "relation": "calls",
       "confidence": "EXTRACTED",
       "source_file": "Sources/skylight/AXElementFinder.swift",
-      "source_location": "L128",
+      "source_location": "L133",
       "weight": 1.0,
       "_src": "skylight_axelementfinder_axelementfinder_collect",
       "_tgt": "skylight_axelementfinder_axelement",
@@ -1689,7 +1698,7 @@
       "relation": "method",
       "confidence": "EXTRACTED",
       "source_file": "Sources/skylight/AXElementFinder.swift",
-      "source_location": "L37",
+      "source_location": "L39",
       "weight": 1.0,
       "_src": "skylight_axelementfinder_axelementfinder",
       "_tgt": "skylight_axelementfinder_axelementfinder_enrollaxtreewakeup",
@@ -1701,7 +1710,7 @@
       "relation": "method",
       "confidence": "EXTRACTED",
       "source_file": "Sources/skylight/AXElementFinder.swift",
-      "source_location": "L84",
+      "source_location": "L86",
       "weight": 1.0,
       "_src": "skylight_axelementfinder_axelementfinder",
       "_tgt": "skylight_axelementfinder_axelementfinder_interactiveelements",
@@ -1713,7 +1722,7 @@
       "relation": "method",
       "confidence": "EXTRACTED",
       "source_file": "Sources/skylight/AXElementFinder.swift",
-      "source_location": "L116",
+      "source_location": "L118",
       "weight": 1.0,
       "_src": "skylight_axelementfinder_axelementfinder",
       "_tgt": "skylight_axelementfinder_axelementfinder_collect",
@@ -1725,7 +1734,7 @@
       "relation": "method",
       "confidence": "EXTRACTED",
       "source_file": "Sources/skylight/AXElementFinder.swift",
-      "source_location": "L142",
+      "source_location": "L149",
       "weight": 1.0,
       "_src": "skylight_axelementfinder_axelementfinder",
       "_tgt": "skylight_axelementfinder_axelementfinder_bestlabel",
@@ -1737,7 +1746,7 @@
       "relation": "method",
       "confidence": "EXTRACTED",
       "source_file": "Sources/skylight/AXElementFinder.swift",
-      "source_location": "L152",
+      "source_location": "L159",
       "weight": 1.0,
       "_src": "skylight_axelementfinder_axelementfinder",
       "_tgt": "skylight_axelementfinder_axelementfinder_stringattr",
@@ -1749,7 +1758,19 @@
       "relation": "method",
       "confidence": "EXTRACTED",
       "source_file": "Sources/skylight/AXElementFinder.swift",
-      "source_location": "L158",
+      "source_location": "L165",
+      "weight": 1.0,
+      "_src": "skylight_axelementfinder_axelementfinder",
+      "_tgt": "skylight_axelementfinder_axelementfinder_stringarrayattr",
+      "source": "skylight_axelementfinder_axelementfinder",
+      "target": "skylight_axelementfinder_axelementfinder_stringarrayattr",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "Sources/skylight/AXElementFinder.swift",
+      "source_location": "L172",
       "weight": 1.0,
       "_src": "skylight_axelementfinder_axelementfinder",
       "_tgt": "skylight_axelementfinder_axelementfinder_frame",
@@ -1761,7 +1782,7 @@
       "relation": "method",
       "confidence": "EXTRACTED",
       "source_file": "Sources/skylight/AXElementFinder.swift",
-      "source_location": "L176",
+      "source_location": "L190",
       "weight": 1.0,
       "_src": "skylight_axelementfinder_axelementfinder",
       "_tgt": "skylight_axelementfinder_axelementfinder_isaxtrusted",
@@ -1773,7 +1794,7 @@
       "relation": "calls",
       "confidence": "EXTRACTED",
       "source_file": "Sources/skylight/AXElementFinder.swift",
-      "source_location": "L87",
+      "source_location": "L89",
       "weight": 1.0,
       "_src": "skylight_axelementfinder_axelementfinder_interactiveelements",
       "_tgt": "skylight_axelementfinder_axelementfinder_enrollaxtreewakeup",
@@ -1785,7 +1806,7 @@
       "relation": "calls",
       "confidence": "EXTRACTED",
       "source_file": "Sources/skylight/AXElementFinder.swift",
-      "source_location": "L85",
+      "source_location": "L87",
       "weight": 1.0,
       "_src": "skylight_axelementfinder_axelementfinder_interactiveelements",
       "_tgt": "skylight_axelementfinder_axelementfinder_isaxtrusted",
@@ -1797,7 +1818,7 @@
       "relation": "calls",
       "confidence": "EXTRACTED",
       "source_file": "Sources/skylight/AXElementFinder.swift",
-      "source_location": "L96",
+      "source_location": "L98",
       "weight": 1.0,
       "_src": "skylight_axelementfinder_axelementfinder_interactiveelements",
       "_tgt": "skylight_axelementfinder_axelementfinder_collect",
@@ -1821,7 +1842,7 @@
       "relation": "calls",
       "confidence": "EXTRACTED",
       "source_file": "Sources/skylight/AXElementFinder.swift",
-      "source_location": "L119",
+      "source_location": "L121",
       "weight": 1.0,
       "_src": "skylight_axelementfinder_axelementfinder_collect",
       "_tgt": "skylight_axelementfinder_axelementfinder_stringattr",
@@ -1833,7 +1854,7 @@
       "relation": "calls",
       "confidence": "EXTRACTED",
       "source_file": "Sources/skylight/AXElementFinder.swift",
-      "source_location": "L123",
+      "source_location": "L125",
       "weight": 1.0,
       "_src": "skylight_axelementfinder_axelementfinder_collect",
       "_tgt": "skylight_axelementfinder_axelementfinder_frame",
@@ -1845,7 +1866,7 @@
       "relation": "calls",
       "confidence": "EXTRACTED",
       "source_file": "Sources/skylight/AXElementFinder.swift",
-      "source_location": "L126",
+      "source_location": "L128",
       "weight": 1.0,
       "_src": "skylight_axelementfinder_axelementfinder_collect",
       "_tgt": "skylight_axelementfinder_axelementfinder_bestlabel",
@@ -1857,7 +1878,19 @@
       "relation": "calls",
       "confidence": "EXTRACTED",
       "source_file": "Sources/skylight/AXElementFinder.swift",
-      "source_location": "L145",
+      "source_location": "L132",
+      "weight": 1.0,
+      "_src": "skylight_axelementfinder_axelementfinder_collect",
+      "_tgt": "skylight_axelementfinder_axelementfinder_stringarrayattr",
+      "source": "skylight_axelementfinder_axelementfinder_collect",
+      "target": "skylight_axelementfinder_axelementfinder_stringarrayattr",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "Sources/skylight/AXElementFinder.swift",
+      "source_location": "L152",
       "weight": 1.0,
       "_src": "skylight_axelementfinder_axelementfinder_bestlabel",
       "_tgt": "skylight_axelementfinder_axelementfinder_stringattr",
@@ -3045,7 +3078,7 @@
       "relation": "method",
       "confidence": "EXTRACTED",
       "source_file": "Sources/skylight/CLI.swift",
-      "source_location": "L270",
+      "source_location": "L275",
       "weight": 1.0,
       "_src": "skylight_cli_cli",
       "_tgt": "skylight_cli_cli_hold",
@@ -3057,7 +3090,7 @@
       "relation": "method",
       "confidence": "EXTRACTED",
       "source_file": "Sources/skylight/CLI.swift",
-      "source_location": "L280",
+      "source_location": "L285",
       "weight": 1.0,
       "_src": "skylight_cli_cli",
       "_tgt": "skylight_cli_cli_type",

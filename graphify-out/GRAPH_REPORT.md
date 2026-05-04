@@ -1,12 +1,12 @@
-# Graph Report - skylight-cli  (2026-05-03)
+# Graph Report - skylight-cli  (2026-05-04)
 
 ## Corpus Check
-- 20 files · ~20,763 words
+- 20 files · ~21,120 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 120 nodes · 165 edges · 17 communities detected
-- Extraction: 82% EXTRACTED · 18% INFERRED · 0% AMBIGUOUS · INFERRED: 29 edges (avg confidence: 0.8)
+- 121 nodes · 167 edges · 17 communities detected
+- Extraction: 83% EXTRACTED · 17% INFERRED · 0% AMBIGUOUS · INFERRED: 29 edges (avg confidence: 0.8)
 - Token cost: 0 input · 0 output
 
 ## Community Hubs (Navigation)
@@ -31,9 +31,9 @@
 ## God Nodes (most connected - your core abstractions)
 1. `ArgParser` - 20 edges
 2. `CLIError` - 18 edges
-3. `AXElementFinderTests` - 8 edges
-4. `UtilsTests` - 8 edges
-5. `AXElementFinder` - 8 edges
+3. `AXElementFinder` - 9 edges
+4. `AXElementFinderTests` - 8 edges
+5. `UtilsTests` - 8 edges
 6. `CLI` - 8 edges
 7. `Output` - 7 edges
 8. `JSONContractTests` - 6 edges
@@ -42,28 +42,28 @@
 
 ## Surprising Connections (you probably didn't know these)
 - `AXElementFinderTests` --inherits--> `XCTestCase`  [EXTRACTED]
-  Tests/SkylightCliTests/AXElementFinderTests.swift →   _Bridges community 4 → community 1_
+  Tests/SkylightCliTests/AXElementFinderTests.swift →   _Bridges community 4 → community 2_
 - `UtilsTests` --inherits--> `XCTestCase`  [EXTRACTED]
-  Tests/SkylightCliTests/UtilsTests.swift →   _Bridges community 1 → community 5_
+  Tests/SkylightCliTests/UtilsTests.swift →   _Bridges community 2 → community 5_
 - `JSONContractTests` --inherits--> `XCTestCase`  [EXTRACTED]
-  Tests/SkylightCliTests/JSONContractTests.swift →   _Bridges community 1 → community 6_
+  Tests/SkylightCliTests/JSONContractTests.swift →   _Bridges community 2 → community 6_
 
 ## Communities
 
 ### Community 0 - "Community 0"
-Cohesion: 0.17
+Cohesion: 0.2
 Nodes (4): Error, CLI, ArgParser, CLIError
 
 ### Community 1 - "Community 1"
+Cohesion: 0.2
+Nodes (3): Output, PNGWriter, SKLEnvironment
+
+### Community 2 - "Community 2"
 Cohesion: 0.16
 Nodes (5): OutputTests, UtilsTests, VersionTests, SmokeTests, XCTestCase
 
-### Community 2 - "Community 2"
-Cohesion: 0.27
-Nodes (3): Output, PNGWriter, SKLEnvironment
-
 ### Community 3 - "Community 3"
-Cohesion: 0.33
+Cohesion: 0.35
 Nodes (2): AXElement, AXElementFinder
 
 ### Community 4 - "Community 4"
@@ -119,7 +119,7 @@ Cohesion: 0.67
 Nodes (1): Hold
 
 ## Knowledge Gaps
-- **Thin community `Community 3`** (11 nodes): `AXElement`, `AXElementFinder`, `.bestLabel()`, `.collect()`, `.enrollAXTreeWakeup()`, `.frame()`, `.interactiveElements()`, `.isAXTrusted()`, `.stringAttr()`, `.int()`, `AXElementFinder.swift`
+- **Thin community `Community 3`** (11 nodes): `AXElement`, `AXElementFinder`, `.bestLabel()`, `.collect()`, `.enrollAXTreeWakeup()`, `.frame()`, `.interactiveElements()`, `.isAXTrusted()`, `.stringArrayAttr()`, `.stringAttr()`, `AXElementFinder.swift`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
 - **Thin community `Community 4`** (8 nodes): `AXElementFinderTests`, `.test_interacting_roles_contains_button()`, `.test_interacting_roles_contains_checkbox()`, `.test_interacting_roles_contains_link()`, `.test_interacting_roles_contains_textfield()`, `.test_interacting_roles_count_minimum()`, `.test_webarea_in_roles()`, `AXElementFinderTests.swift`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
@@ -149,10 +149,10 @@ Nodes (1): Hold
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
+- **Why does `ArgParser` connect `Community 0` to `Community 1`, `Community 12`, `Community 13`, `Community 14`, `Community 15`?**
+  _High betweenness centrality (0.345) - this node is a cross-community bridge._
 - **Why does `CLIError` connect `Community 0` to `Community 1`, `Community 2`, `Community 5`, `Community 6`, `Community 7`, `Community 16`?**
-  _High betweenness centrality (0.344) - this node is a cross-community bridge._
-- **Why does `ArgParser` connect `Community 0` to `Community 2`, `Community 3`, `Community 12`, `Community 13`, `Community 14`, `Community 15`?**
-  _High betweenness centrality (0.342) - this node is a cross-community bridge._
+  _High betweenness centrality (0.343) - this node is a cross-community bridge._
 - **Are the 11 inferred relationships involving `ArgParser` (e.g. with `.run()` and `.run()`) actually correct?**
   _`ArgParser` has 11 INFERRED edges - model-reasoned connections that need verification._
 - **Are the 14 inferred relationships involving `CLIError` (e.g. with `.test_element_not_found_error()` and `.test_json_error_output()`) actually correct?**
