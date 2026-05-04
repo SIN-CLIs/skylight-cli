@@ -16,7 +16,7 @@ Bootstrap a working Swift CLI (`skylight-cli`) that the brain repo (`OpenCode`) 
 - Overlay Set-of-Marks (SoM) badges for LLM-driven UI selection
 - Click on AX-tree elements without moving the visible cursor
 
-This is one of three sibling CLIs (see `docs/stealth-triade.md`).
+This is one of three sibling CLIs (see `docs/stealth-suite.md`).
 
 ---
 
@@ -38,7 +38,7 @@ This is one of three sibling CLIs (see `docs/stealth-triade.md`).
 - `docs/brain.md` — 8 core principles + decision log D-001..D-012 + open questions Q-A..Q-D + anti-decisions.
 - `docs/handoff.md` — done/not-done lists, risks, first-action smoke test for next agent.
 - `docs/recovery-mode.md` — symptom-driven debugging guide (8 symptoms + catch-all + postmortem template).
-- `docs/stealth-triade.md` — how this CLI relates to `playstealth-cli` + `unmask-cli` + `OpenCode`.
+- `docs/stealth-suite.md` — how this CLI relates to `playstealth-cli` + `unmask-cli` + `OpenCode`.
 - `docs/sessions/session-01.md` — this file.
 - Updated `README.md` with usage examples and exit codes.
 - Added `.gitignore` for SPM (`.build`, `.swiftpm`, `*.xcodeproj`).
@@ -121,6 +121,6 @@ docs/architecture.md                           +new
 docs/brain.md                                  +new
 docs/handoff.md                                +new
 docs/recovery-mode.md                          +new
-docs/stealth-triade.md                         +new
+docs/stealth-suite.md                         +new
 docs/sessions/session-01.md                    +new (this file)
 ```

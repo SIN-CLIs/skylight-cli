@@ -2,7 +2,7 @@
 
 ## skylight-cli
 Stateless macOS CLI for stealth browser automation.
-Part of the SIN-CLIs stealth triad:
+Part of the SIN-CLIs Stealth Suite:
 ```
 unmask-cli (sense) → playstealth-cli (think) → skylight-cli (act)
 ```
@@ -23,7 +23,7 @@ unmask-cli (sense) → playstealth-cli (think) → skylight-cli (act)
 - Used by stealth-runner via StealthExecutor (driver abstraction)
 - Replaces CDP-based bridge in A2A-SIN-Worker-heypiggy
 - See GitHub Epic #41 for v1.0 roadmap
-- Part of 6-repo Stealth-Quad ecosystem
+- Part of 6-repo Stealth Suite ecosystem
 
 ## Version: 0.2.0
 ## Minimum macOS: 12.0+

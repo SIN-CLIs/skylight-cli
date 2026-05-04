@@ -38,7 +38,7 @@ You are the brain calling this CLI as a subprocess.
 
 **Required reading before first call:**
 1. `AGENTS.md` "Output Contract" + "Exit Codes" sections.
-2. `docs/stealth-triade.md` to understand siblings.
+2. `docs/stealth-suite.md` to understand siblings.
 
 **You MUST:**
 - Treat stdout as strict JSON; do not log stdout as text.

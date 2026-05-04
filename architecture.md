@@ -2,7 +2,7 @@
 
 ## skylight-cli
 Stateless macOS CLI for stealth browser automation.
-Part of the SIN-CLIs stealth triad:
+Part of the SIN-CLIs Stealth Suite:
 ```
 unmask-cli (sense) → playstealth-cli (think) → skylight-cli (act)
 ```

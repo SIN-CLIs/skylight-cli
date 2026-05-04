@@ -1,7 +1,7 @@
-# Graph Report - skylight-cli  (2026-05-01)
+# Graph Report - skylight-cli  (2026-05-03)
 
 ## Corpus Check
-- 20 files · ~19,694 words
+- 20 files · ~20,763 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary

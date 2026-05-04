@@ -4,11 +4,13 @@ import ApplicationServices
 import CoreGraphics
 
 struct AXElement {
-    let frame: CGRect      // global screen coordinates (top-left origin)
+    let frame: CGRect
     let label: String
     let role: String
-    let path: String       // AX parent chain, e.g. "AXWindow/AXWebArea/AXGroup/AXButton"
-    let axElement: AXUIElement  // reference for AXPress actions
+    let path: String
+    let axElement: AXUIElement
+    let domId: String?
+    let domClasses: [String]?
 }
 
 enum AXElementFinder {
@@ -125,7 +127,12 @@ enum AXElementFinder {
         {
             let label = bestLabel(of: element)
             if currentRole != "AXStaticText" || !label.trimmingCharacters(in: .whitespaces).isEmpty {
-                results.append(AXElement(frame: frame, label: label, role: currentRole, path: currentPath, axElement: element))
+                // Chrome-spezifische DOM-Attribute lesen (AXDOMIdentifier, AXDOMClassList)
+                let domId = stringAttr(element, "AXDOMIdentifier" as CFString)
+                let domClassesArr = stringArrayAttr(element, "AXDOMClassList" as CFString)
+                results.append(AXElement(frame: frame, label: label, role: currentRole,
+                                         path: currentPath, axElement: element,
+                                         domId: domId, domClasses: domClassesArr))
             }
         }
 
@@ -153,6 +160,13 @@ enum AXElementFinder {
         var ref: CFTypeRef?
         guard AXUIElementCopyAttributeValue(element, attr, &ref) == .success else { return nil }
         return ref as? String
+    }
+
+    private static func stringArrayAttr(_ element: AXUIElement, _ attr: CFString) -> [String]? {
+        var ref: CFTypeRef?
+        guard AXUIElementCopyAttributeValue(element, attr, &ref) == .success,
+              let arr = ref as? [Any] else { return nil }
+        return arr.compactMap { $0 as? String }
     }
 
     private static func frame(of element: AXUIElement) -> CGRect? {

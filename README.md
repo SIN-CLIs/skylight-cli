@@ -9,16 +9,16 @@ and clicks via `AXUIElementPerformAction` (Accessibility API) —
 
 **Prerequisite:** Chrome needs accessibility enabled. Start VoiceOver once briefly,
 then stop it — the AX tree persists. No `--force-renderer-accessibility` flag needed.
-See [stealth-runner AGENTS.md](https://github.com/OpenSIN-AI/stealth-runner/blob/main/AGENTS.md) for details.
+See [stealth-runner AGENTS.md](https://github.com/SIN-CLIs/stealth-runner/blob/main/AGENTS.md) for details.
 
 **Current Version:** 0.2.0 (AXPress)
 **Minimum macOS:** 12.0+  
 **Status:** Experimental — AXPress-click works. 25 issues open. Not production-ready.
 
-Part of the SIN-CLIs stealth triad:
+Part of the SIN-CLIs Stealth Suite:
 
 ```
-unmask-cli (sense)  ->  playstealth-cli (think)  ->  skylight-cli (act)
+unmask-cli (sense)  ->  playstealth-cli (hide)  ->  skylight-cli (act)
 ```
 
 Each command is atomic, prints a single JSON object on stdout and exits with
@@ -133,3 +133,24 @@ Sources/skylight/
   Hold.swift            Hold command for Cloudflare Turnstile
   Utils.swift           Arg parser, JSON output, error model, PNG writer
 ```
+
+---
+
+## 🔗 Stealth Suite
+
+Part of the **SIN-CLIs Stealth Suite** — 12 Komponenten für autonome Browser-Automation:
+
+| Layer | Repo | Technologie |
+|-------|------|-------------|
+| 🧠 Orchestrator | [`stealth-runner`](https://github.com/SIN-CLIs/stealth-runner) | Python |
+| 🖱️ ACT Main | [`skylight-cli`](https://github.com/SIN-CLIs/skylight-cli) | Swift |
+| 🖱️ ACT Popup | [`cua-touch`](https://github.com/SIN-CLIs/cua-touch) | Python + Swift |
+| 🎭 HIDE | [`playstealth-cli`](https://github.com/SIN-CLIs/playstealth-cli) | Python |
+| 👁️ SENSE | [`unmask-cli`](https://github.com/SIN-CLIs/unmask-cli) | TypeScript |
+| 📹 VERIFY | [`screen-follow`](https://github.com/SIN-CLIs/screen-follow) | Swift |
+| 🔍 SCAN | [`macos-ax-cli`](https://github.com/SIN-CLIs/macos-ax-cli) | Swift |
+| 🔒 CAPTCHA | [`stealth-captcha`](https://github.com/SIN-CLIs/stealth-captcha) | Python |
+| 🧩 SKILLS | [`stealth-skills`](https://github.com/SIN-CLIs/stealth-skills) | TS/Python |
+| 🐙 GRAPH | [`ax-graph`](https://github.com/SIN-CLIs/ax-graph) *(planned)* | Swift |
+| 💀 LEGACY | [`computer-use-mcp`](https://github.com/SIN-CLIs/computer-use-mcp) | TypeScript |
+| 💀 LEGACY | [`A2A-SIN-Worker-heypiggy`](https://github.com/OpenSIN-AI/A2A-SIN-Worker-heypiggy) | Python |

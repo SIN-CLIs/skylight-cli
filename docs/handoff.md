@@ -26,7 +26,7 @@
 - [x] `docs/architecture.md` — module map + data flow
 - [x] `docs/brain.md` — principles + decision log (D-001 through D-012)
 - [x] `docs/recovery-mode.md` — when stuck
-- [x] `docs/stealth-triade.md` — how this CLI fits with playstealth-cli + unmask-cli
+- [x] `docs/stealth-suite.md` — how this CLI fits with playstealth-cli + unmask-cli
 - [x] `docs/sessions/session-01.md` — this session's work log
 
 ---
@@ -37,7 +37,7 @@
 - [ ] **Codesign + notarization.** Currently ad-hoc sign only. Production needs Developer ID and notarytool integration. See `docs/recovery-mode.md` if you hit signing failures.
 - [ ] **CI workflow.** No `.github/workflows/build.yml` yet. Should at minimum: `swift build -c release` on macos-14 runner, run a smoke test (`get-window-state` against the dev server's own PID), upload binary artifact.
 - [ ] **Recording / replay subcommands.** Mentioned in the original brief, deferred per Decision D-006. Open question Q-C in `brain.md`.
-- [ ] **`--state-dir` / persistent profiles.** Not in scope for this CLI; lives in `playstealth-cli`. Confirm with `docs/stealth-triade.md`.
+- [ ] **`--state-dir` / persistent profiles.** Not in scope for this CLI; lives in `playstealth-cli`. Confirm with `docs/stealth-suite.md`.
 - [ ] **Multi-window-per-PID disambiguation.** We pick "largest layer-0." If a user has two equally-large content windows, behavior is undefined-but-deterministic. Add `--window-id` flag if/when this becomes a problem.
 - [ ] **SwiftLint config.** Not added. Repo is small enough not to need one yet.
 - [ ] **Unit tests.** No tests written. AX/SkyLight code is hard to unit-test (needs a real running app). Integration test against `Calculator.app` is the realistic minimum.
@@ -106,7 +106,7 @@ If any of those fail, **stop**, open `docs/recovery-mode.md`, and follow the mat
 ## Communication Channels
 
 - **Operator:** the human who started this. Speaks German, prefers concise answers, does not want emojis in code.
-- **Sibling repos:** `playstealth-cli`, `unmask-cli`, `OpenCode` (orchestrator). See `docs/stealth-triade.md`.
+- **Sibling repos:** `playstealth-cli`, `unmask-cli`, `OpenCode` (orchestrator). See `docs/stealth-suite.md`.
 - **Issues / questions:** append to `docs/sessions/session-NN.md` for the current session, then push.
 
 ---

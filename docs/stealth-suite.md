@@ -125,7 +125,7 @@ Note: the brain decides to use `playstealth-cli navigate` for URL changes (CDP-d
 
 ---
 
-## Anti-Patterns (across the triade)
+## Anti-Patterns (across the suite)
 
 - ❌ Implementing keyboard typing in `skylight-cli`. Belongs in `playstealth-cli`.
 - ❌ Implementing window screenshot in `playstealth-cli` (it already has one via CDP, but the cropping logic for SoM lives here).
@@ -154,7 +154,7 @@ Anything that requires *human config*:
 
 Each CLI has its own SemVer. The orchestrator pins exact git SHAs (until each CLI hits 1.0). Breaking JSON-shape changes in any CLI = major bump = orchestrator must explicitly upgrade.
 
-The triade does NOT have a coordinated meta-version. Treat each CLI like an independent vendor library.
+The suite does NOT have a coordinated meta-version. Treat each CLI like an independent vendor library.
 
 ---
 

@@ -1,6 +1,6 @@
 # AGENTS.md – skylight-cli
 
-**ACT** component of Stealth Quad: AXUIElementPerformAction via macOS Accessibility API.
+**ACT** component of Stealth Suite: AXUIElementPerformAction via macOS Accessibility API.
 NUR `--element-index` – keine Koordinaten, keine Mausbewegung.
 
 ## CLI
@@ -17,8 +17,8 @@ skylight-cli hold --pid <PID> --element-index <N> --duration 3000
 skylight-cli click --pid <PID> --x -1 --y -1
 ```
 
-## 🔗 Stealth-Quad
-- **Orchestrator:** [stealth-runner](https://github.com/OpenSIN-AI/stealth-runner)
+## 🔗 Stealth Suite
+- **Orchestrator:** [stealth-runner](https://github.com/SIN-CLIs/stealth-runner)
 - **HIDE:** [playstealth-cli](https://github.com/SIN-CLIs/playstealth-cli)
 - **SENSE:** [unmask-cli](https://github.com/SIN-CLIs/unmask-cli)
 - **VERIFY:** [screen-follow](https://github.com/SIN-CLIs/screen-follow)

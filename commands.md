@@ -146,7 +146,7 @@ for e in json.load(sys.stdin)['elements']:
 "
 ```
 
-## Integration mit Stealth-Quad
+## Integration mit Stealth Suite
 
 ```bash
 # Mit stealth-runner step orchestrator

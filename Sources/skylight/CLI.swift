@@ -252,18 +252,23 @@ enum CLI {
             "pid": pid,
             "count": elements.count,
             "elements": elements.enumerated().map { (idx, el) in
-                [
-                    "index": idx,
-                    "role": el.role,
-                    "label": el.label,
-                    "path": el.path,
-                    "frame": [
-                        "x": el.frame.origin.x,
-                        "y": el.frame.origin.y,
-                        "width": el.frame.size.width,
-                        "height": el.frame.size.height
+                {
+                    var dict: [String: Any] = [
+                        "index": idx,
+                        "role": el.role,
+                        "label": el.label,
+                        "path": el.path,
+                        "frame": [
+                            "x": el.frame.origin.x,
+                            "y": el.frame.origin.y,
+                            "width": el.frame.size.width,
+                            "height": el.frame.size.height
+                        ]
                     ]
-                ] as [String: Any]
+                    if let domId = el.domId { dict["dom_id"] = domId }
+                    if let domClasses = el.domClasses { dict["dom_classes"] = domClasses }
+                    return dict
+                }()
             }
         ])
     }
