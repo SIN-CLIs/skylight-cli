@@ -12,7 +12,7 @@ then stop it — the AX tree persists. No `--force-renderer-accessibility` flag 
 See [stealth-runner AGENTS.md](https://github.com/SIN-CLIs/stealth-runner/blob/main/AGENTS.md) for details.
 
 **Current Version:** 0.2.0 (AXPress)
-**Minimum macOS:** 12.0+  
+**Minimum macOS:** 12.0+
 **Status:** Experimental — AXPress-click works. 25 issues open. Not production-ready.
 
 Part of the SIN-CLIs Stealth Suite:
@@ -157,6 +157,7 @@ Part of the **SIN-CLIs Stealth Suite** — 17 Komponenten für autonome Browser-
 | 🛡️ GUARDIAN | [stealth-guardian](https://github.com/SIN-CLIs/stealth-guardian) | Python |
 | 🔄 SYNC | [stealth-sync](https://github.com/SIN-CLIs/stealth-sync) | Python |
 | ⚡ SESSION | [stealth-session](https://github.com/SIN-CLIs/stealth-session) | Python |
+| 🎯 DYNAMIC | [stealth-dynamic](https://github.com/SIN-CLIs/stealth-dynamic) | Python |
 | 💀 LEGACY | [skylight-cli](https://github.com/SIN-CLIs/skylight-cli) | Swift |
 | 🔬 SOTA | [stealth-sota](https://github.com/SIN-CLIs/stealth-sota) | Python |
 | 💀 LEGACY | [computer-use-mcp](https://github.com/SIN-CLIs/computer-use-mcp) | TypeScript |
